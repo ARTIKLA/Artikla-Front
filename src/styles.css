@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/bootstrap/bootstrap.css';
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.label-form { color: gray; font-weight: 500; font-size: 12.5px;}
+.oblig {color: #e17055; transform: translateY(-5px); }

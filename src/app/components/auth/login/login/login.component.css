@@ -1,0 +1,40 @@
+/* @import '../../../assets/bootstrap/bootstrap.css';
+@import '../../../assets/fontawesome/css/all.css'; */
+.fondo-auth {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../../../../assets/images/login-wallpaper.jpg');
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-card {
+    width: 20em;
+    background: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+.user_card {margin: 0 2rem 1rem 2rem;}
+.user_card_2 {width: 20em; margin: 0 35%;}
+
+.contenedor-prin{
+    padding: 8em 2em;
+    float: center;
+}
+
+.title-general {
+    margin: 1em;
+    color: dimgrey;
+}
+
+.btn-login {
+    width: 100%;
+    background: #16a085 !important;
+    color: #ffffff;
+}
