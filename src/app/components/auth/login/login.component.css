@@ -1,10 +1,8 @@
-/* @import '../../../assets/bootstrap/bootstrap.css';
-@import '../../../assets/fontawesome/css/all.css'; */
 .fondo-auth {
     position: absolute;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('../../../../../assets/images/login-wallpaper.jpg');
+    background-image: url('../../../../assets/images/login-wallpaper.jpg');
     width: 100vw;
     height: 100vh;
 }

@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 /*================== DEPENDENCIAS ==================*/
 import {ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResponseInterceptor } from './_helpers/http.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/auth/login/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,16 @@ import { LoginComponent } from './components/auth/login/login/login.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ResponseInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
