@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
-import { LoginE } from 'src/app/entidades/user';
-import {Router} from '@angular/router';
-//import { Login } from 'src/app/interfaces/user/user';
 import { VALIDACIONES_USUARIO } from 'src/app/helpers/validacion_campos/user.validators';
 import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.validators';
+import { Login } from 'src/app/entidades/user';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +14,11 @@ export class LoginComponent implements OnInit {
 
   /*==== Formulario con validaciones ====*/
   public loginForm : FormGroup;
-  public loginData:LoginE;
-  public usuario:any;
   public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
 
-  constructor(public formBuilder : FormBuilder, public authService : LoginService,private router:Router) { }
+  constructor(public formBuilder : FormBuilder, public authService : LoginService) { }
+
   ngOnInit(): void {
-    this.loginData= new LoginE();
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
       NombreUsuario: ['', [...this.VAL.NombreUsuarioVal.validators]],
@@ -42,26 +38,34 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  viewPass(eye, inputID) {
+    eye.classList.toggle("fa-eye");
+    eye.classList.toggle("fa-eye-slash");
+    var input = document.getElementById(inputID);
+    if (input.getAttribute("type") == "password") {
+        input.setAttribute("type", "text");
+    } else {
+        input.setAttribute("type", "password");
+    }
+}
+
   login() {
-  //  if(this.loginForm.valid) {
-   //    this.status.loading = true;
-      this.authService.login(this.loginData).subscribe((data) => {   
-        this.usuario=data;
-        if(this.usuario != '' || this.usuario != null  ){
-          this.router.navigate(['login']);
-        }else{
-          console.log('no existe');
+    if(this.loginForm.valid) {
+      // this.status.loading = true;
+      this.authService.login(this.loginForm.getRawValue()).subscribe(
+        (res : boolean) => {
+          console.log(res);
+        }, error => {
+          console.log(error);
+        });
+    } else {
+      for(let value in this.loginForm.value) {
+        if(this.loginForm.get(value).invalid) {
+          this.loginForm.get(value).markAsTouched();
+          this.VAL[value+"Val"].showMsg = MensajeCampo(this.loginForm.get(value), this.VAL[value+"Val"].validatorsMsg);
         }
-          }, 
-      error => { console.log(error);  });
-  //  } else {
-     // for(let value in this.loginForm.value) {
-     //   if(this.loginForm.get(value).invalid) {
-      //    this.loginForm.get(value).markAsTouched();
-      //    this.VAL[value+"Val"].showMsg = MensajeCampo(this.loginForm.get(value), this.VAL[value+"Val"].validatorsMsg);
-     //   }
-    //  }
-    //}
+      }
+    }
   }
 
 }

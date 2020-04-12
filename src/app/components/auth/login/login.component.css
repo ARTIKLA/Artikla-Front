@@ -53,3 +53,14 @@
     margin-left: 50pt;
     padding: 10pt;
 }
+
+.field-icon {
+    position: absolute;
+    cursor: pointer;
+    float: right;
+    top: .5rem;
+    right: .5em;
+    z-index: 100;
+    color: silver;
+}
+.field-icon:hover {color: gray;}

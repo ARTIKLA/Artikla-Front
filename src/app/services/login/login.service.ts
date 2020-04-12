@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LoginE } from 'src/app/entidades/user';
+import { Login } from 'src/app/entidades/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,12 @@ export class LoginService {
   
   constructor(private httpClient : HttpClient) {}
 
-  login(user : LoginE){
-    return this.httpClient.put<LoginE>(`${this.API_URL}/iniciarSesion`, user);
+  login(login : Login) {
+    // let options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
+    return this.httpClient.post<Login>(`${this.API_URL}/iniciarSesion`, login)
+      .pipe(map(response => {
+        if(response != null) return response.Success;
+        return false;
+    }));
   }
 }

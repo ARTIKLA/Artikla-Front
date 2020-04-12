@@ -9,24 +9,6 @@
                 <div class="d-flex justify-content-center title-general">
                     <h5 class="panel-title">ARTIKLA</h5>
               </div>
-                <mat-card class="mediumSize">
-                    <mat-card-title>Login</mat-card-title>
-                        <mat-card-content>
-                        <div class="justify-content-center">
-                            <mat-form-field>
-                                <mat-label></mat-label>
-                                <input matInput [(ngModel)]="loginData.nombreUsuario">
-                              <!-- <span class="invalid-feedback">{{ VAL.NombreUsuarioVal.showMsg }}</span>-->
-                            </mat-form-field><br>
-                            <mat-form-field>
-                                <mat-label></mat-label>
-                                <input matInput [(ngModel)]="loginData.passwordUsuario">
-                           <!--     <span class="invalid-feedback">{{ VAL.PasswordUsuarioVal.showMsg }}</span>-->
-                                <mat-hint></mat-hint>
-                            </mat-form-field>
-                            <button mat-button (click)="login()" color="primary" >  Ingresar </button>
-                </div>
-                            <!--
                 <div class="justify-content-center">
                     <form id="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
                         <div class="row">
@@ -35,7 +17,7 @@
                                 <div class="input-group input-group-sm">
                                     <!-- <div class="input-group-append"> //font-awesome
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div> --><!--
+                                    </div> -->
                                     <input type="text" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.NombreUsuarioVal.showMsg }"
                                     formControlName="NombreUsuario" autocomplete="off" id="NombreUsuario">
                                     <span class="invalid-feedback">{{ VAL.NombreUsuarioVal.showMsg }}</span>
@@ -46,13 +28,23 @@
                                 <div class="input-group input-group-sm">
                                     <input type="password" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.PasswordUsuarioVal.showMsg }"
                                     formControlName="PasswordUsuario" autocomplete="off" id="PasswordUsuario">
+                                    <span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password" (click)="viewPass($event.target, 'PasswordUsuario')"></span>
                                     <span class="invalid-feedback">{{ VAL.PasswordUsuarioVal.showMsg }}</span>
                                 </div>
                             </div>
-                        </div>-->
-                    </mat-card-content>
-                </mat-card>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-group">
+                                    <input type="submit" name="btn-vincular" class="btn btn-login btn-sm" value="Ingresar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- <app-footer></app-footer> -->

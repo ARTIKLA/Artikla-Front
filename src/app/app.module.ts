@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {MatInputModule} from '@angular/material/input';
 
-// import { ResponseInterceptor } from './_helpers/http.interceptor';
+//=========================== Helpers =============================//
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import { ResponseInterceptor } from './helpers/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,18 +53,12 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatSelectModule
   ],
- /* providers: [FormBuilder,
-  {
+  providers: [FormBuilder
+  ,{
     provide: HTTP_INTERCEPTORS,
     useClass: ResponseInterceptor,
     multi: true
-  }],*/
-  providers: [FormBuilder],
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// {
-//   provide: HTTP_INTERCEPTORS,
-//   useClass: ResponseInterceptor,
-//   multi: true
-// }

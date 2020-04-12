@@ -1,5 +1,5 @@
-export class LoginE {
-    nombreUsuario : string;
-    passwordUsuario : string;
-    success : boolean;
+export class Login {
+    NombreUsuario : string;
+    PasswordUsuario : string;
+    Success : boolean;
 }
