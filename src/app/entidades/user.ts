@@ -1,5 +1,5 @@
-export class Login {
-    NombreUsuario : string;
-    PasswordUsuario : string;
+export interface Login {
+    NombreUsuario : String;
+    PasswordUsuario : String;
     Success : boolean;
 }

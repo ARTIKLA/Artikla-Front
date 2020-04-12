@@ -11,8 +11,9 @@ export class ResponseInterceptor implements HttpInterceptor {
     constructor() {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        //Agregar header de Token de sesión a la petición:
-        request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        request = request.clone({ headers: request.headers.set('content-type', 'application/json') });
+        
+        console.log('Petición--->>>', request);
         return next.handle(request).pipe(
             map((respuesta : HttpEvent<any>) => {
                 if (respuesta instanceof HttpResponse && respuesta.ok) {
