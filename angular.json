@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "artikla-front": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "artikla-front"
+    }
+  },
+  "defaultProject": "artikla-front",
+  "cli": {
+    "analytics": "ac52e755-f017-4b1b-91ec-c2a0f3bc22a1"
+  }
 }

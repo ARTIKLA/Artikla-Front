@@ -36,3 +36,20 @@
     background: #16a085 !important;
     color: #ffffff;
 }
+
+.input{
+    margin: 20pt;
+}
+.table {
+    border: 1px solid black;
+    padding: 8px;
+}
+.allSize{
+    width: 100%;
+}
+
+.mediumSize{
+    width: 50%;
+    margin-left: 50pt;
+    padding: 10pt;
+}

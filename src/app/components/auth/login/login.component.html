@@ -9,38 +9,23 @@
                 <div class="d-flex justify-content-center title-general">
                     <h5 class="panel-title">ARTIKLA</h5>
               </div>
-                <div class="justify-content-center">
-                    <form id="form" [formGroup]="loginForm" novalidate>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label class="label-form" for="NombreUsuario">Nombre de usuario<span class="oblig"> *</span></label>
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control input_doc"
-                                    formControlName="NombreUsuario" autocomplete="off" id="NombreUsuario">
-                                    <!-- [ngClass]="{'is-invalid': NombreUsuarioVal.showMsg }" -->
-                                    <!-- <span class="invalid-feedback">{{ NombreUsuarioVal.showMsg }}</span> -->
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label class="label-form" for="PasswordUsuario">Contraseña<span class="oblig"> *</span></label>
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control input_doc"
-                                    formControlName="PasswordUsuario" autocomplete="off" id="PasswordUsuario">
-                                    <!-- [ngClass]="{'is-invalid': PasswordUsuarioVal.showMsg }" -->
-                                    <!-- <span class="invalid-feedback">{{ PasswordUsuarioVal.showMsg }}</span> -->
-                                </div>
-                            </div>
+                <mat-card class="mediumSize">
+                    <mat-card-title>Login</mat-card-title>
+                        <mat-card-content>
+                        <div class="justify-content-center">
+                            <mat-form-field>
+                                <mat-label></mat-label>
+                                <input matInput [(ngModel)]="loginData.nombreUsuario">
+                            </mat-form-field><br>
+                            <mat-form-field>
+                                <mat-label></mat-label>
+                                <input matInput [(ngModel)]="loginData.passwordUsuario">
+                                <mat-hint></mat-hint>
+                            </mat-form-field>
+                            <button mat-button (click)="login()" color="primary" >  Ingresar </button>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3">
-                                <div class="form-group">
-                                    <input type="submit" name="btn-vincular" class="btn btn-login btn-sm" value="Ingresar">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
     </div>
