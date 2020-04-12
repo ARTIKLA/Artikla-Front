@@ -16,18 +16,43 @@
                             <mat-form-field>
                                 <mat-label></mat-label>
                                 <input matInput [(ngModel)]="loginData.nombreUsuario">
+                              <!-- <span class="invalid-feedback">{{ VAL.NombreUsuarioVal.showMsg }}</span>-->
                             </mat-form-field><br>
                             <mat-form-field>
                                 <mat-label></mat-label>
                                 <input matInput [(ngModel)]="loginData.passwordUsuario">
+                           <!--     <span class="invalid-feedback">{{ VAL.PasswordUsuarioVal.showMsg }}</span>-->
                                 <mat-hint></mat-hint>
                             </mat-form-field>
                             <button mat-button (click)="login()" color="primary" >  Ingresar </button>
-                        </div>
+                </div>
+                            <!--
+                <div class="justify-content-center">
+                    <form id="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="label-form" for="NombreUsuario">Nombre de usuario<span class="oblig"> *</span></label>
+                                <div class="input-group input-group-sm">
+                                    <!-- <div class="input-group-append"> //font-awesome
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div> --><!--
+                                    <input type="text" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.NombreUsuarioVal.showMsg }"
+                                    formControlName="NombreUsuario" autocomplete="off" id="NombreUsuario">
+                                    <span class="invalid-feedback">{{ VAL.NombreUsuarioVal.showMsg }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="label-form" for="PasswordUsuario">Contraseña<span class="oblig"> *</span></label>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.PasswordUsuarioVal.showMsg }"
+                                    formControlName="PasswordUsuario" autocomplete="off" id="PasswordUsuario">
+                                    <span class="invalid-feedback">{{ VAL.PasswordUsuarioVal.showMsg }}</span>
+                                </div>
+                            </div>
+                        </div>-->
                     </mat-card-content>
                 </mat-card>
             </div>
         </div>
     </div>
 </div>
-<!-- <app-footer></app-footer> -->

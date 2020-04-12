@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Login } from 'src/app/entidades/user';
+import { LoginE } from 'src/app/entidades/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
   
   constructor(private httpClient : HttpClient) {}
 
-  login(user : Login){
-    return this.httpClient.put<Login>(`${this.API_URL}/iniciarSesion`, user);
+  login(user : LoginE){
+    return this.httpClient.put<LoginE>(`${this.API_URL}/iniciarSesion`, user);
   }
 }

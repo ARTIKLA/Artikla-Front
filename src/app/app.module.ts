@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import {ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import {MatInputModule} from '@angular/material/input';
+
+// import { ResponseInterceptor } from './_helpers/http.interceptor';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { RouterModule, Routes } from '@angular/router';
+//import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -54,6 +58,12 @@ import {MatSelectModule} from '@angular/material/select';
     useClass: ResponseInterceptor,
     multi: true
   }],*/
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// {
+//   provide: HTTP_INTERCEPTORS,
+//   useClass: ResponseInterceptor,
+//   multi: true
+// }
