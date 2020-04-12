@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Login } from 'src/app/interfaces/user/user';
+import { VALIDACIONES_USUARIO } from 'src/app/helpers/validacion_campos/user.validators';
+import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.validators';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +14,29 @@ export class LoginComponent implements OnInit {
 
   /*==== Formulario con validaciones ====*/
   public loginForm : FormGroup;
+  public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
+
   constructor(public formBuilder : FormBuilder, public authService : LoginService) { }
 
   ngOnInit(): void {
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
-      NombreUsuario: ['', []],
-      PasswordUsuario: ['', []],
+      NombreUsuario: ['', [...this.VAL.NombreUsuarioVal.validators]],
+      PasswordUsuario: ['', [...this.VAL.PasswordUsuarioVal.validators]],
     });
 
+
+    /*=================== VALIDAR MENSAJES ASOCIADOS A CADA VALIDACIÓN ===================*/
+    this.validarCampoMsg(this.loginForm.get("NombreUsuario"), this.VAL.NombreUsuarioVal);
+    this.validarCampoMsg(this.loginForm.get("PasswordUsuario"), this.VAL.PasswordUsuarioVal);
   }
 
+  validarCampoMsg(control : AbstractControl, val : GrupoValidaciones) {
+    control.valueChanges.pipe().subscribe(
+      value => {
+        val.showMsg = MensajeCampo(control, val.validatorsMsg) || "";
+      });
+  }
 
   login() {
     if(this.loginForm.valid) {
@@ -34,7 +48,12 @@ export class LoginComponent implements OnInit {
           console.log(error);
         });
     } else {
-      console.log("Formulario inválido");
+      for(let value in this.loginForm.value) {
+        if(this.loginForm.get(value).invalid) {
+          this.loginForm.get(value).markAsTouched();
+          this.VAL[value+"Val"].showMsg = MensajeCampo(this.loginForm.get(value), this.VAL[value+"Val"].validatorsMsg);
+        }
+      }
     }
   }
 
