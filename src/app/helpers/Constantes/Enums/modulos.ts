@@ -1,5 +1,6 @@
 export enum MODULOS {
     HOME,
     MATCH,
-    ARTICULOS
+    ARTICULOS_LISTAR,
+    ARTICULOS_CREAR
 }

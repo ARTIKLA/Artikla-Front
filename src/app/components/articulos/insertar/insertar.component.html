@@ -6,19 +6,19 @@
         <div class="card-body">
             <form  action="" [formGroup]="ArticuloDto" (ngSubmit)="guardarArticulo()" novalidate>
                 <div class="form-group">
-                    <label for="tituloArticulo">Titulo articulo</label>
+                    <label for="tituloArticulo">Título del artículo</label>
                     <input formControlName="titulo" #tituloArticulo  type="text" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="descripcionArticulo">Descripción artículo</label>
+                    <label for="descripcionArticulo">Descripción del artículo</label>
                     <textarea formControlName="descripcion" #descripcionArticulo class="form-control" rows="4" cols="50">                 
                     </textarea>
                 </div>
                 <div class="form-group">
-                    <label for="categorias">Categoria</label>
+                    <label for="categorias">Categoría</label>
                         <select #categorias>
-                            <option value="1">Metodologico</option>
-                            <option value="2">Teorico</option>
+                            <option value="1">Metodológico</option>
+                            <option value="2">Teórico</option>
                         </select>
                 </div>
                 <div>

@@ -6,12 +6,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item text-center">
-                <a class="nav-link" [routerLink]="['/auth/login']">
+                <a class="nav-link">
                     <label>Mis Match<i class="far fa-heart fa-1x"></i></label>
                 </a>
             </li>
-            <li class="nav-item text-center">
-                <a class="nav-link" (click) = "asignarModulo(MODULOS.ARTICULOS);">
+            <li class="nav-item text-center" (click)="asignarModulo(2)">
+                <a class="nav-link">
                     <label>Mis artículos<i class="far fa-newspaper fa-1x"></i></label>
                 </a>
             </li>
@@ -29,10 +29,16 @@
         </div>
     </nav>
 </header>
-<div class="container-fluid">
-	<app-match *ngIf="modulo == MODULOS.MATCH"></app-match>
-    <app-insertar *ngIf="modulo == MODULOS.ARTICULOS"></app-insertar>
-    <app-listar *ngIf="modulo == MODULOS.ARTICULOS"> </app-listar>
+<div class="container">
+    <app-match *ngIf="modulo == MODULOS.MATCH"></app-match>
+    <br><br>
+	<div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <app-insertar *ngIf="modulo == 3"></app-insertar>
+            <app-listar *ngIf="modulo == 2" (backHome)="asignarModulo($event)"> </app-listar>   
+        </div>
+    </div>
 </div>
 
 
