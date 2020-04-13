@@ -1,4 +1,4 @@
-export class autor{
+export class editor{
     id:string
     nombre:string
     correo:string
