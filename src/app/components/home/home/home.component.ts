@@ -7,12 +7,16 @@ import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  get MODULOS() { return MODULOS; };
+  get MODULOS() { return MODULOS;  };
   public modulo : MODULOS;
   constructor() { }
 
   ngOnInit(): void {
     this.modulo = MODULOS.MATCH;
+  }
+
+  asignarModulo(modulo:MODULOS){
+    this.modulo = modulo;
   }
 
 }
