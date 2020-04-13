@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../../services/articulos/articulo.service'
-import { Articulo } from 'src/app/entidades/Articulo';
+import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 import { Categoria } from 'src/app/entidades/Categoria';
 
 @Component({
@@ -11,7 +11,7 @@ import { Categoria } from 'src/app/entidades/Categoria';
 })
 export class ListarComponent implements OnInit {
 
-  articulos:Articulo[];
+  articulos:ArticuloDto[];
   
   constructor(private service:ServiceService, private router:Router) { }
 
