@@ -20,7 +20,7 @@ export class ServiceService {
 
   crearArticulo(articulo:ArticuloDto){
     console.log(articulo);
-    return this.http.post<boolean>(`${this.API_URL}/addArticulo`, articulo).pipe(map((response : boolean) => {
+    return this.http.post<boolean>(`${this.API_URL}/agregarArticulo`, articulo).pipe(map((response : boolean) => {
       return response;
   }));
   }

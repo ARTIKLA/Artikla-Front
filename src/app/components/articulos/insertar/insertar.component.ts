@@ -28,8 +28,7 @@ export class InsertarComponent implements OnInit {
     console.log(this.ArticuloDto);
     this.service.crearArticulo(this.ArticuloDto.getRawValue()).subscribe(data=>{
       alert("Articulo agregado con éxito");
-      this.router.navigate(["articulos/listar"]);
-
+      this.router.navigate(["home"]);
     }, e   =>{
       console.log(e);
     });
