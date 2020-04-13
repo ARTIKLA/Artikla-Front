@@ -11,3 +11,5 @@ html {
 .label-form { color: gray; font-weight: 500; font-size: 12.5px;}
 .oblig {color: #e17055; transform: translateY(-5px); }
 .div-icon { background: #4cbbb9; border: 1px solid #4cbbb9;}
+
+.title-general { color: dimgrey; }

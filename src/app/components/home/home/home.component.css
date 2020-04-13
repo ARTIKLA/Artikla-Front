@@ -19,4 +19,4 @@
 .nav-item label { width: 10rem; }
 .nav-item label i { margin: 0 15px; }
 .nav-link { display: flex; }
-.nav-link label { color: #485460; }
+.nav-link label { color: #485460; margin: auto; }

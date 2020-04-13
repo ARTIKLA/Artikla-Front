@@ -24,17 +24,17 @@ export class VALIDACIONES_USUARIO {
             Validators.required,
             Validators.maxLength(15),
             Validators.minLength(8),
-            Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
+            // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
         ],
         validatorsMsg : {
             required: "Ingresa la contraseña",
             maxLength: "La contraseña debe contener de 8 a 15 caracteres",
             minLength: "La contraseña debe contener de 8 a 15 caracteres",
-            pattern: `La contraseña debe contener al menos:
-                    1 letra mayúscula
-                    1 letra minúscula
-                    1 número
-                    1 caracter especial (#?!@$%^&*-)`
+            // pattern: `La contraseña debe contener al menos:
+            //         1 letra mayúscula
+            //         1 letra minúscula
+            //         1 número
+            //         1 caracter especial (#?!@$%^&*-)`
         },
         showMsg: ""
     }
