@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 import { VALIDACIONES_USUARIO } from 'src/app/helpers/validacion_campos/user.validators';
 import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.validators';
 import { Login } from 'src/app/entidades/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +17,19 @@ export class LoginComponent implements OnInit {
   public loginForm : FormGroup;
   public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
 
-  constructor(public formBuilder : FormBuilder, public authService : LoginService) { }
+  constructor(public formBuilder : FormBuilder, public authService : LoginService, public router : Router) { }
 
   ngOnInit(): void {
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
-      NombreUsuario: ['', [...this.VAL.NombreUsuarioVal.validators]],
-      PasswordUsuario: ['', [...this.VAL.PasswordUsuarioVal.validators]],
+      correoUsuario: ['', [...this.VAL.correoUsuarioVal.validators]],
+      passwordUsuario: ['', [...this.VAL.passwordUsuarioVal.validators]],
     });
 
 
     /*=================== VALIDAR MENSAJES ASOCIADOS A CADA VALIDACIÓN ===================*/
-    this.validarCampoMsg(this.loginForm.get("NombreUsuario"), this.VAL.NombreUsuarioVal);
-    this.validarCampoMsg(this.loginForm.get("PasswordUsuario"), this.VAL.PasswordUsuarioVal);
+    this.validarCampoMsg(this.loginForm.get("correoUsuario"), this.VAL.correoUsuarioVal);
+    this.validarCampoMsg(this.loginForm.get("passwordUsuario"), this.VAL.passwordUsuarioVal);
   }
 
   validarCampoMsg(control : AbstractControl, val : GrupoValidaciones) {
@@ -54,7 +55,8 @@ export class LoginComponent implements OnInit {
       // this.status.loading = true;
       this.authService.login(this.loginForm.getRawValue()).subscribe(
         (res : boolean) => {
-          console.log(res);
+          if(res) this.router.navigate(["/home"]);
+          else alert("Correo y/o contraseña incorrectos");
         }, error => {
           console.log(error);
         });

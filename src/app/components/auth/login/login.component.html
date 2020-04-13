@@ -13,23 +13,26 @@
                     <form id="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label class="label-form" for="NombreUsuario">Nombre de usuario<span class="oblig"> *</span></label>
+                                <label class="label-form" for="CorreoUsuario">Correo electrónico<span class="oblig"> *</span></label>
                                 <div class="input-group input-group-sm">
-                                    <!-- <div class="input-group-append"> //font-awesome
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div> -->
-                                    <input type="text" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.NombreUsuarioVal.showMsg }"
-                                    formControlName="NombreUsuario" autocomplete="off" id="NombreUsuario">
-                                    <span class="invalid-feedback">{{ VAL.NombreUsuarioVal.showMsg }}</span>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text div-icon"><i class="fas fa-at"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.correoUsuarioVal.showMsg }"
+                                    formControlName="correoUsuario" autocomplete="off" id="CorreoUsuario" placeholder="ejemplo@email.com">
+                                    <span class="invalid-feedback">{{ VAL.correoUsuarioVal.showMsg }}</span>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="label-form" for="PasswordUsuario">Contraseña<span class="oblig"> *</span></label>
                                 <div class="input-group input-group-sm">
-                                    <input type="password" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.PasswordUsuarioVal.showMsg }"
-                                    formControlName="PasswordUsuario" autocomplete="off" id="PasswordUsuario">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text div-icon"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.passwordUsuarioVal.showMsg }"
+                                    formControlName="passwordUsuario" autocomplete="off" id="PasswordUsuario" placeholder="***********">
                                     <span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password" (click)="viewPass($event.target, 'PasswordUsuario')"></span>
-                                    <span class="invalid-feedback">{{ VAL.PasswordUsuarioVal.showMsg }}</span>
+                                    <span class="invalid-feedback">{{ VAL.passwordUsuarioVal.showMsg }}</span>
                                 </div>
                             </div>
                         </div>

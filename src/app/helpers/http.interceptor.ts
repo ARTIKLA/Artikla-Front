@@ -13,7 +13,6 @@ export class ResponseInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({ headers: request.headers.set('content-type', 'application/json') });
         
-        console.log('Petición--->>>', request);
         return next.handle(request).pipe(
             map((respuesta : HttpEvent<any>) => {
                 if (respuesta instanceof HttpResponse && respuesta.ok) {

@@ -12,15 +12,10 @@ export class LoginService {
   
   constructor(private httpClient : HttpClient) {}
 
-  login(login : Login) {
-    // let options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
-    // let headers = new HttpHeaders();
-    // headers.append('Content-Type','application/json');
-    return this.httpClient.post<Login>(`${this.API_URL}/iniciarSesion`, 
-        { nombreUsuario: login.NombreUsuario, passwordUsuario: login.PasswordUsuario })
-      .pipe(map(response => {
-        if(response != null) return response.Success;
-        return false;
+  login(login : Login) : Observable<boolean> {
+    return this.httpClient.post<boolean>(`${this.API_URL}/iniciarSesion`, login)
+      .pipe(map((response : boolean) => {
+        return response;
     }));
   }
 }

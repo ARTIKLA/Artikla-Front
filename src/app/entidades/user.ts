@@ -1,5 +1,5 @@
 export interface Login {
-    NombreUsuario : String;
-    PasswordUsuario : String;
-    Success : boolean;
+    correoUsuario : String;
+    passwordUsuario : String;
+    success : boolean;
 }

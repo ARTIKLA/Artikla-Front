@@ -3,23 +3,23 @@ import { Validators } from '@angular/forms';
 
 export class VALIDACIONES_USUARIO {
     
-    public NombreUsuarioVal : GrupoValidaciones = {
+    public correoUsuarioVal : GrupoValidaciones = {
         validators: [
             Validators.required,
-            //isNotLetter(),
-            Validators.maxLength(20),
+            Validators.email,
+            Validators.maxLength(50),
             Validators.minLength(3)
         ],
         validatorsMsg : {
-            required: "Ingresa el nombre de usuario",
-            isNotLetter: "Nombre incorrecto",
-            maxLength: "Nombre incorrecto",
-            minLength: "Nombre incorrecto"
+            required: "Ingresa tu correo electrónico",
+            maxLength: "Correo incorrecto",
+            minLength: "Correo incorrecto",
+            email: "Correo incorrecto"
         },
         showMsg: ""
     }
 
-    public PasswordUsuarioVal : GrupoValidaciones = {
+    public passwordUsuarioVal : GrupoValidaciones = {
         validators: [
             Validators.required,
             Validators.maxLength(15),
