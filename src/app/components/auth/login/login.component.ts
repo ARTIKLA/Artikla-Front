@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
       correoUsuario: ['', [...this.VAL.correoUsuarioVal.validators]],
-      passwordUsuario: ['', [...this.VAL.passwordUsuarioVal.validators]],
+      passwordUsuario: ['', []],
     });
 
 
     /*=================== VALIDAR MENSAJES ASOCIADOS A CADA VALIDACIÓN ===================*/
     this.validarCampoMsg(this.loginForm.get("correoUsuario"), this.VAL.correoUsuarioVal);
-    this.validarCampoMsg(this.loginForm.get("passwordUsuario"), this.VAL.passwordUsuarioVal);
+
   }
 
   validarCampoMsg(control : AbstractControl, val : GrupoValidaciones) {

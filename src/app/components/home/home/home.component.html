@@ -32,13 +32,8 @@
 <div class="container">
     <app-match *ngIf="modulo == MODULOS.MATCH"></app-match>
     <br><br>
-	<div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <app-insertar *ngIf="modulo == 3"></app-insertar>
+            <app-insertar *ngIf="modulo == 3"></app-insertar>       
             <app-listar *ngIf="modulo == 2" (backHome)="asignarModulo($event)"> </app-listar>   
-        </div>
-    </div>
 </div>
 
 
