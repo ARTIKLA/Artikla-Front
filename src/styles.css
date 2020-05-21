@@ -13,3 +13,56 @@ html {
 .div-icon { background: #4cbbb9; border: 1px solid #4cbbb9;}
 
 .title-general { color: dimgrey; }
+
+
+.fondo-auth {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../src/assets/images/login-wallpaper.jpg');
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-card {
+    width: 20em;
+    background: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+.user_card {margin: 0 2rem 1rem 2rem;}
+.user_card_2 {width: 20em; margin: 0 35%;}
+
+.contenedor-prin {
+    padding: 6em 2em;
+    float: center;
+}
+
+.title-general {
+    margin: 1em;
+    color: dimgrey;
+}
+
+.btn-login {
+    width: 100%;
+    background: #4cbbb9 !important;
+    color: #ffffff;
+}
+
+.div-icon {color: #ffffff; }
+
+.field-icon {
+    position: absolute;
+    cursor: pointer;
+    float: right;
+    top: .5rem;
+    right: .5em;
+    z-index: 100;
+    color: silver;
+}
+.field-icon:hover {color: gray;}

@@ -4,7 +4,7 @@ import {ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import {MatInputModule} from '@angular/material/input';
+// import {MatInputModule} from '@angular/material/input';
 
 //=========================== Helpers =============================//
 
@@ -15,19 +15,20 @@ import { MatchComponent } from './components/match/match/match.component';
 import { ListarComponent } from './components/articulos/listar/listar.component'
 //import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
+// import {MatMenuModule} from '@angular/material/menu';
+// import {MatButtonModule} from '@angular/material/button';
+// import {MatToolbarModule} from '@angular/material/toolbar';
+// import {MatIconModule} from '@angular/material/icon';
+// import {MatCardModule} from '@angular/material/card';
+// import {MatTableModule} from '@angular/material/table';
+// import {MatDialogModule} from '@angular/material/dialog';
+// import {MatRadioModule} from '@angular/material/radio';
+// import {MatSelectModule} from '@angular/material/select';
 import {ResponseInterceptor } from './helpers/http.interceptor';
 import { HomeComponent } from './components/home/home/home.component';
 import {ServiceService} from './services/articulos/articulo.service';
 import { InsertarComponent } from './components/articulos/insertar/insertar.component';
+import { RegistroUsuarioComponent } from './components/auth/registro-usuario/registro-usuario.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { InsertarComponent } from './components/articulos/insertar/insertar.comp
     MatchComponent,
     HomeComponent,
     ListarComponent,
-    InsertarComponent
+    InsertarComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -50,17 +52,17 @@ import { InsertarComponent } from './components/articulos/insertar/insertar.comp
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatCardModule,
-    MatTableModule,
-    MatDialogModule,
-    MatRadioModule,
+    // MatMenuModule,
+    // MatButtonModule,
+    // MatToolbarModule,
+    // MatIconModule,
+    // MatInputModule,
+    // MatCardModule,
+    // MatTableModule,
+    // MatDialogModule,
+    // MatRadioModule,
+    // MatSelectModule
     HttpClientModule,
-    MatSelectModule
   ],
   providers: [FormBuilder
   ,{

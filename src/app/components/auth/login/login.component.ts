@@ -5,6 +5,7 @@ import { VALIDACIONES_USUARIO } from 'src/app/helpers/validacion_campos/user.val
 import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.validators';
 import { Login } from 'src/app/entidades/user';
 import { Router } from '@angular/router';
+import { StatusPage } from 'src/app/helpers/status_page';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public status : StatusPage;
   /*==== Formulario con validaciones ====*/
   public loginForm : FormGroup;
   public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
@@ -20,15 +22,17 @@ export class LoginComponent implements OnInit {
   constructor(public formBuilder : FormBuilder, public authService : LoginService, public router : Router) { }
 
   ngOnInit(): void {
+    this.status = new StatusPage(this.router);
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
       correoUsuario: ['', [...this.VAL.correoUsuarioVal.validators]],
-      passwordUsuario: ['', []],
+      passwordUsuario: ['', [...this.VAL.passwordLoginVal.validators]],
     });
 
 
     /*=================== VALIDAR MENSAJES ASOCIADOS A CADA VALIDACIÓN ===================*/
     this.validarCampoMsg(this.loginForm.get("correoUsuario"), this.VAL.correoUsuarioVal);
+    this.validarCampoMsg(this.loginForm.get("passwordUsuario"), this.VAL.passwordLoginVal);
 
   }
 
@@ -39,15 +43,17 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  viewPass(eye, inputID) {
-    eye.classList.toggle("fa-eye");
-    eye.classList.toggle("fa-eye-slash");
-    var input = document.getElementById(inputID);
-    if (input.getAttribute("type") == "password") {
-        input.setAttribute("type", "text");
-    } else {
-        input.setAttribute("type", "password");
-    }
+
+//SE DEBE CREAR UNA NUEVA CLASE PARA CONTROLAR EL ESTADO DE LOS COMPONENTES:
+onRedirect(redirect : string, ...param) {
+  // this.loading = true; //Pantalla de carga
+  setTimeout(() => {
+      // this.loading = false;
+      if(redirect.includes("http")) window.location.href = redirect;
+      else if(param.length > 0) {
+          this.router.navigate([redirect, {p: param}]);
+      } else this.router.navigateByUrl(redirect);
+  }, 2000);
 }
 
   login() {
