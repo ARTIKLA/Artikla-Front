@@ -1,5 +1,5 @@
 .header {
-    background: #77d8d8;
+    background: #0f385a;
     padding: 0 3em 1em 3em;
     box-shadow: 0 3px 10px #4cbbb9;
 }
@@ -13,18 +13,20 @@
 #btn-logout:hover { cursor: pointer; }
 
 .home-nav {
-    background: #4cbbb9 !important;
+    background: #0f385a6c !important;
     margin: auto;
     position: relative;
     width: min-content;
     border-radius: 5px;
+    color: #ffffff;
 }
+
 
 .nav-item { border-right: 2px solid #77d8d8; }
 .nav-item, .nav-link, .nav-item label, .nav-item label i { cursor: pointer; font-weight: 600; }
-.nav-item label:hover { color: #ffffff; }
+.nav-item label:hover { transform: scale(1.1);text-decoration: underline; color: #ffffff; }
 .item-chat { border: none; }
 .nav-item label { width: 10rem; }
 .nav-item label i { margin: 0 15px; }
 .nav-link { display: flex; }
-.nav-link label { color: #485460; margin: auto; }
+.nav-link label { color: #ffffff; margin: auto; }

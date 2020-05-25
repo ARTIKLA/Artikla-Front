@@ -3,6 +3,9 @@ import { Categoria } from './Categoria';
 import { Autor } from './autor';
 
 export interface ArticuloDto {
-    titulo: String,
-    descripcion:String,
+    id:number;
+    titulo:String;
+    descripcion:String;
+    categorias:Categoria[];
+    autor:Autor;
 }

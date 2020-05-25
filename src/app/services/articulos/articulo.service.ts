@@ -19,14 +19,27 @@ export class ServiceService {
   }
 
   crearArticulo(articulo:ArticuloDto){
-    console.log(articulo);
-    return this.http.post<boolean>(`${this.API_URL}/agregarArticulo`, articulo).pipe(map((response : boolean) => {
+   
+    return this.http.post<string>(`${this.API_URL}/agregarArticulo`, articulo).pipe(map((response : string) => {
+      console.log(articulo);
       return response;
+      
   }));
   }
 
-  eliminarArticulo(articulo:ArticuloDto){
+  getArticuloById(id:number){
+       return this.http.get<ArticuloDto>(`${this.API_URL}/buscarArticulo/${id}` )
+  }
 
+  editarArticulo(articulo:ArticuloDto){
+    return this.http.put<ArticuloDto>(this.API_URL+"/editarArticulo/", articulo);
+  }
+
+  eliminarArticulo(articulo:ArticuloDto){
+  }
+
+  getCategorias(){
+    return this.http.get<Categoria[]>(`${this.API_URL}/obtenerCategorias`);
   }
 
 

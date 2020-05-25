@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/services/articulos/articulo.service';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 import { Categoria } from 'src/app/entidades/Categoria';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { IfStmt } from '@angular/compiler';
+import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-insertar',
@@ -13,24 +15,71 @@ import { IfStmt } from '@angular/compiler';
 })
 export class InsertarComponent implements OnInit {
 
+  
+  @Output() backHome = new EventEmitter();
+   modulo:MODULOS;
+
+  
+  get MODULOS() { return MODULOS; };
 
   public ArticuloDto : FormGroup;
+  public categoriasCrear:Categoria[];
+  public mostrarCategorias:boolean = false;
+
+
   constructor(public formBuilder : FormBuilder, private router:Router, private service:ServiceService) { }
 
   ngOnInit(): void {
+  
     this.ArticuloDto = this.formBuilder.group({
       titulo: ['',[]],
       descripcion: ['', []],
+      categorias: this.formBuilder.array([])
     });
+    this.service.getCategorias().subscribe(data =>{
+      this.categoriasCrear = data;
+      console.log(this.categoriasCrear)
+    });
+  }
+
+
+  actualizarChkbxArray(chk, isChecked, key) {
+
+    const chkArray = <FormArray>this.ArticuloDto.get(key);
+
+    if (isChecked) {
+      console.log("esta checkeado :" + chk.titulo);
+   
+         if (chkArray.controls.findIndex(x => x.value == chk.id) == -1)
+             chkArray.push(new FormControl({ id: chk.id, titulo: chk.titulo }));
+            console.log("agregando :" +chkArray);
+             console.log(chkArray);
+    } else {
+      console.log("no esta checkeado :" + chk.titulo)
+         let idx = chkArray.controls.findIndex(x => x.get("chk.titulo") == chk.titulo);
+         chkArray.removeAt(idx);
+         console.log("eliminando" );
+         console.log(chkArray)
+    }
+    
+}
+  
+  cerrarModal(){
+    console.log("click");
+
+   // this.backHome.emit(2);
+   this.backHome.emit(MODULOS.ARTICULOS_LISTAR);
   }
 
   guardarArticulo(){
     console.log(this.ArticuloDto);
-    this.service.crearArticulo(this.ArticuloDto.getRawValue()).subscribe(data=>{
+   
+
+    this.service.crearArticulo(this.ArticuloDto.getRawValue()).subscribe((data:string)=>{
       alert("Articulo agregado con éxito");
-      this.router.navigate(["articulos/listar"]);
+     this.cerrarModal();
     }, e   =>{
-      console.log(e);
+      console.log("error" + e);
     });
   }
 }

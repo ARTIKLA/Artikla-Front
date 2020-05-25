@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Autor } from 'src/app/entidades/autor';
+import { Autor } from 'src/app/entidades/Autor';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 
 @Injectable({

@@ -29,6 +29,7 @@ import { HomeComponent } from './components/home/home/home.component';
 import {ServiceService} from './services/articulos/articulo.service';
 import { InsertarComponent } from './components/articulos/insertar/insertar.component';
 import { RegistroUsuarioComponent } from './components/auth/registro-usuario/registro-usuario.component';
+import { EditarComponent } from './components/articulos/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegistroUsuarioComponent } from './components/auth/registro-usuario/reg
     HomeComponent,
     ListarComponent,
     InsertarComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
