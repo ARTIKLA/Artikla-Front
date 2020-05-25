@@ -1,6 +1,7 @@
 export enum MODULOS {
     HOME,
-    MATCH,
+    MATCH_AUTOR,
+    MATCH_EDITOR,
     ARTICULOS_LISTAR,
     ARTICULOS_CREAR
 }

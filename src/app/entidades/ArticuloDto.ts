@@ -1,7 +1,8 @@
 import { ListarComponent } from '../components/articulos/listar/listar.component';
 import { Categoria } from './Categoria';
+import { Autor } from './autor';
 
-export class ArticuloDto {
-    titulo:String;
-    descripcion:String;
+export interface ArticuloDto {
+    titulo: String,
+    descripcion:String,
 }

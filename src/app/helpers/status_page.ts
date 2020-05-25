@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { RespuestaWS } from '../interfaces/respueta.ws';
 import { RespuestasWS } from './Constantes/respuestasWS';
 import { _respWS } from './Constantes/Enums/cod_respuestasWS';
+import { Usuario } from '../entidades/user';
 
 export class StatusPage {
     constructor(public router : Router) {}
@@ -32,6 +33,21 @@ export class StatusPage {
             }
         });
         return showMsg;
+    }
+
+    guardarUsuarioLocalStorage(usuario : Usuario) {
+        localStorage.setItem("Usuario", JSON.stringify(usuario));
+    }
+
+    eliminarUsuarioLocalStorage() {
+        localStorage.removeItem("Usuario");
+    }
+
+    obtenerUsuarioLocalStorage() : Usuario {
+        let usuario : Usuario = { id: -1 };
+        try {
+            return <Usuario>JSON.parse(localStorage.getItem('Usuario')) ?? usuario;
+        } catch(ex) { return usuario; }
     }
 
     showModal() {

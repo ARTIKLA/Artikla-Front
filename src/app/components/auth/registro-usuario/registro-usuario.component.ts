@@ -63,6 +63,7 @@ export class RegistroUsuarioComponent implements OnInit {
 
   infoFormAutor() {
     this.formRegistrar.get("rol").setValue(TIPO_USUARIO.AUTOR);
+    this.formRegistrar.addControl("autor", new FormControl());
   }
 
   infoFormEditor() {

@@ -1,113 +1,45 @@
-<div class="row match-content text-center">
-    <div class="col-md-3 match-box">
-        <div class="row match-header">
-            <div class="col-md-4 text-left">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
+<div class="container-fluid">
+    <div class="row match-content text-center" *ngIf="mostrarMatch">
+        <div class="col-md-3 match-box" *ngFor="let articulo of articulosMatch">
+            <div class="row match-header">
+                <div class="col-md-4 text-left">
+                    <div><i class="fa fa-flask"></i></div>
+                    <div><i class="fa fa-robot"></i></div>
+                </div>
+                <div class="col-md-4 match-photo text-center">
+                    <img src="../../../../assets/images/login-wallpaper.jpg" alt="">
+                </div>
+                <div class="col-md-4 text-right" *ngFor="let categoria of articulo.categorias">
+                    <label class="label-form match-categoria"><i class="fa fa-flask">dwwadsdDWFDGBDAWFEWFEW</i></label>
+                </div>
             </div>
-            <div class="col-md-4 match-photo text-center">
-                <img src="../../../../assets/images/login-wallpaper.jpg" alt="">
+            <div class="row match-body">
+                <div class="col-md-12"><br></div>
+                <div class="col-md-12 title-general text-center">
+                    <label class="label-form match-descrip">{{articulo.titulo}}</label>
+                    <br>
+                   <div class="text-left">
+                        <label class="label-form match-nombre font-italic"><i class="fas fa-user match-icon-user"></i>
+                        Pepe la rana hernández</label>
+                   </div>
+                </div>
+               <div class="col-md-12 match-resumen text-left">
+                    <div class="col-md-12 text-left">
+                        <label class="label-form text-center">  
+                        {{articulo.descripcion}}
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 text-right">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
-            </div>
-        </div>
-        <div class="row match-body">
-            <div class="col-md-12"><br><br></div>
-            <div class="col-md-12 title-general text-center">
-                <h6 class="panel-title">Nombre Prueba ApellidoPrueba ApellidoPrueba</h6>
-            </div>
-
-            <div class="col-md-12 match-resumen text-left">
-                <label class="label-form">
-                    Resumenresumen resumen resumen resumen resumen resumen resumen resumen resumenresumen resumen resumen resumenresumen resumen resumen
-                </label>
-            </div>
-        </div>
-        <hr>
-        <div class="row match-footer">
-            <div class="col-md-6 match-yes text-left">
-                <a><i class="far fa-heart fa-2x"></i></a>
-            </div>
-            <div class="col-md-6 match-no text-right">
-                <a><i class="fas fa-times fa-2x"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 match-box">
-        <div class="row match-header">
-            <div class="col-md-4 text-left">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
-            </div>
-            <div class="col-md-4 match-photo text-center">
-                <img src="../../../../assets/images/login-wallpaper.jpg" alt="">
-            </div>
-            <div class="col-md-4 text-right">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
-            </div>
-        </div>
-        <div class="row match-body">
-            <div class="col-md-12"><br><br></div>
-            <div class="col-md-12 title-general text-center">
-                <h6 class="panel-title">Nombre Prueba ApellidoPrueba ApellidoPrueba</h6>
-            </div>
-
-            <div class="col-md-12 match-resumen text-left">
-                <label class="label-form">
-                    Resumenresumen resumen resumen resumen resumen resumen resumen resumen resumenresumen resumen resumen resumenresumen resumen resumen
-                </label>
-            </div>
-        </div>
-        <hr>
-        <div class="row match-footer">
-            <div class="col-md-6 match-yes text-left">
-                <a><i class="far fa-heart fa-2x"></i></a>
-            </div>
-            <div class="col-md-6 match-no text-right">
-                <a><i class="fas fa-times fa-2x"></i></a>
+            <hr>
+            <div class="row match-footer">
+                <div class="col-md-6 match-yes text-left">
+                    <a><i class="far fa-heart fa-2x"></i></a>
+                </div>
+                <div class="col-md-6 match-no text-right">
+                    <a><i class="fas fa-times fa-2x"></i></a>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-3 match-box">
-        <div class="row match-header">
-            <div class="col-md-4 text-left">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
-            </div>
-            <div class="col-md-4 match-photo text-center">
-                <img src="../../../../assets/images/login-wallpaper.jpg" alt="">
-            </div>
-            <div class="col-md-4 text-right">
-                <div><i class="fa fa-flask"></i></div>
-                <div><i class="fa fa-robot"></i></div>
-            </div>
-        </div>
-        <div class="row match-body">
-            <div class="col-md-12"><br><br></div>
-            <div class="col-md-12 title-general text-center">
-                <h6 class="panel-title">Nombre Prueba ApellidoPrueba ApellidoPrueba</h6>
-            </div>
-
-            <div class="col-md-12 match-resumen text-left">
-                <label class="label-form">
-                    Resumenresumen resumen resumen resumen resumen resumen resumen resumen resumenresumen resumen resumen resumenresumen resumen resumen
-                </label>
-            </div>
-        </div>
-        <hr>
-        <div class="row match-footer">
-            <div class="col-md-6 match-yes text-left">
-                <a><i class="far fa-heart fa-2x"></i></a>
-            </div>
-            <div class="col-md-6 match-no text-right">
-                <a><i class="fas fa-times fa-2x"></i></a>
-            </div>
-        </div>
-    </div>
-
 </div>

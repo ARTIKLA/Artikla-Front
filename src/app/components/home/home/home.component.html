@@ -1,7 +1,11 @@
 <header class="header">
+    <div class="col-md-12 text-right header-data">
+        <label class="header-nombre font-italic"><i class="fas fa-feather-alt"></i>{{status.obtenerUsuarioLocalStorage().nombre}}</label>
+        <a id="btn-logout" class="header-nombre font-italic text-danger">Salir</a>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light home-nav">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -30,11 +34,8 @@
     </nav>
 </header>
 <div class="container">
-    <app-match *ngIf="modulo == MODULOS.MATCH"></app-match>
+    <app-match *ngIf="modulo == MODULOS.MATCH_AUTOR"></app-match>
     <br><br>
             <app-insertar *ngIf="modulo == 3"></app-insertar>       
             <app-listar *ngIf="modulo == 2" (backHome)="asignarModulo($event)"> </app-listar>   
 </div>
-
-
-

@@ -1,19 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
+import { StatusPage } from 'src/app/helpers/status_page';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from 'src/app/entidades/user';
+import { TIPO_USUARIO } from 'src/app/helpers/Constantes/Enums/usuarios';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 
 export class HomeComponent implements OnInit {
   get MODULOS() { return MODULOS; };
   public modulo : MODULOS;
-  constructor() { }
+  public status : StatusPage;
+  constructor(public router : Router, public authService : UsuarioService) { }
 
   ngOnInit(): void {
-    this.modulo = MODULOS.MATCH;
+    this.status = new StatusPage(this.router);
+    this.buscarInfoUsuario();
+  }
+
+  buscarInfoUsuario() {
+     console.log(this.status.obtenerUsuarioLocalStorage());
+     this.authService.obtenerUsuarioPorId(this.status.obtenerUsuarioLocalStorage().id).subscribe(
+      (usuario : Usuario) => {
+        if(usuario == null) {
+          alert("Se ha presentado un inconveniente al obtener el usuario");
+        } else {
+          this.status.guardarUsuarioLocalStorage(usuario);
+          this.validarRolUsuario(usuario);
+        }
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  validarRolUsuario(usuario : Usuario) {
+    switch(usuario.rol) {
+      case TIPO_USUARIO.AUTOR:
+        this.modulo = MODULOS.MATCH_AUTOR;
+      case TIPO_USUARIO.EDITOR:
+        this.modulo = MODULOS.MATCH_AUTOR;
+    }
   }
 
   asignarModulo(modulo: MODULOS){

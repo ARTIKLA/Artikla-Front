@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
-import { LoginService } from 'src/app/services/login/login.service';
 import { VALIDACIONES_USUARIO } from 'src/app/helpers/validacion_campos/user.validators';
 import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.validators';
-import { Login } from 'src/app/entidades/user';
+import { Login, Usuario } from 'src/app/entidades/user';
 import { Router } from '@angular/router';
 import { StatusPage } from 'src/app/helpers/status_page';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +19,11 @@ export class LoginComponent implements OnInit {
   public loginForm : FormGroup;
   public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
 
-  constructor(public formBuilder : FormBuilder, public authService : LoginService, public router : Router) { }
+  constructor(public formBuilder : FormBuilder, public authService : UsuarioService, public router : Router) { }
 
   ngOnInit(): void {
     this.status = new StatusPage(this.router);
+    this.status.eliminarUsuarioLocalStorage();
     //*===================== FORMULARIO ===================*/
     this.loginForm = this.formBuilder.group({
       correoUsuario: ['', [...this.VAL.correoUsuarioVal.validators]],
@@ -60,9 +61,17 @@ onRedirect(redirect : string, ...param) {
     if(this.loginForm.valid) {
       // this.status.loading = true;
       this.authService.login(this.loginForm.getRawValue()).subscribe(
-        (res : boolean) => {
-          if(res) this.router.navigate(["/home"]);
-          else alert("Correo y/o contraseña incorrectos");
+        (idRespuesta : number) => {
+          if(idRespuesta == null) {
+            alert("Correo y/o contraseña incorrectos");
+            this.loginForm.get("passwordUsuario").setValue("");
+          } else {
+            let usuario : Usuario = {
+              id : idRespuesta
+            }
+            this.status.guardarUsuarioLocalStorage(usuario);
+            this.router.navigate(["/home"]);
+          }
         }, error => {
           console.log(error);
         });
