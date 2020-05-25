@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 import { StatusPage } from 'src/app/helpers/status_page';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/entidades/user';
 import { TIPO_USUARIO } from 'src/app/helpers/Constantes/Enums/usuarios';
-=======
->>>>>>> 8c5f4d0692f14c8c5d0ff7728be6b9bf0a989ecd
-
-import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,15 +16,10 @@ import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 export class HomeComponent implements OnInit {
   get MODULOS() { return MODULOS; };
   public modulo : MODULOS;
-<<<<<<< HEAD
   public status : StatusPage;
-  constructor(public router : Router, public authService : UsuarioService) { }
-=======
   public articuloDto:ArticuloDto;
-
-  constructor() { }
->>>>>>> 8c5f4d0692f14c8c5d0ff7728be6b9bf0a989ecd
-
+  constructor(public router : Router, public authService : UsuarioService) { }
+  
   ngOnInit(): void {
     this.status = new StatusPage(this.router);
     this.buscarInfoUsuario();

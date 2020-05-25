@@ -29,7 +29,7 @@ export class EditarComponent implements OnInit {
   categoriasActualizar: Categoria[];
   
 
-  constructor(public formBuilder: FormBuilder, private router:Router, private service:ServiceService) { }
+  constructor(public formBuilder: FormBuilder, private router:Router, public service:ServiceService) { }
 
   ngOnInit(): void {
     console.log(this.modulo);
@@ -45,6 +45,7 @@ export class EditarComponent implements OnInit {
     });
 
     this.service.getCategorias().subscribe(categorias =>{
+      console.log(categorias);
       this.categorias = categorias;
     });
 

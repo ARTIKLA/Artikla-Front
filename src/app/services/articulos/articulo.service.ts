@@ -38,7 +38,7 @@ export class ServiceService {
   eliminarArticulo(articulo:ArticuloDto){
   }
 
-  getCategorias(){
+  getCategorias() {
     return this.http.get<Categoria[]>(`${this.API_URL}/obtenerCategorias`);
   }
 

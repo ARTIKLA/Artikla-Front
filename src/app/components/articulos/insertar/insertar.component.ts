@@ -6,7 +6,6 @@ import { Categoria } from 'src/app/entidades/Categoria';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { IfStmt } from '@angular/compiler';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-insertar',
