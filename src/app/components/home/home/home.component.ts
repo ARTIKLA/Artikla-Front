@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 
+import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
+import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,6 +11,8 @@ import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 export class HomeComponent implements OnInit {
   get MODULOS() { return MODULOS; };
   public modulo : MODULOS;
+  public articuloDto:ArticuloDto;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +22,12 @@ export class HomeComponent implements OnInit {
   asignarModulo(modulo: MODULOS){
     console.log(modulo);
     this.modulo = modulo;
+  }
+
+  editarArticulo(modulo: MODULOS, articuloDto:ArticuloDto){
+    this.modulo = modulo;
+    this.articuloDto = articuloDto;
+
   }
 
 }

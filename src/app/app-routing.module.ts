@@ -6,6 +6,7 @@ import { MatchComponent } from './components/match/match/match.component';
 import { ListarComponent } from './components/articulos/listar/listar.component';
 import { InsertarComponent } from './components/articulos/insertar/insertar.component';
 import { RegistroUsuarioComponent } from './components/auth/registro-usuario/registro-usuario.component';
+import { EditarComponent } from './components/articulos/editar/editar.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'auth/login' , component: LoginComponent },
   { path: 'auth/registrar' , component: RegistroUsuarioComponent },
   { path: 'articulos/listar', component : ListarComponent},
-  { path: 'articulos/insertar', component : InsertarComponent}
+  { path: 'articulos/insertar', component : InsertarComponent},
+  { path: 'articulos/editar', component : EditarComponent}
 ];
 
 @NgModule({
