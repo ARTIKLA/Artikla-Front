@@ -1,0 +1,4 @@
+export enum _respWS {
+    ERROR_GUARDAR_USUARIO,
+    USUARIO_REGISTRADO,
+}

@@ -1,5 +1,6 @@
 import { GrupoValidaciones } from 'src/app/interfaces/interface.validators';
 import { Validators } from '@angular/forms';
+import { isNotLetter } from './custom.validators';
 
 export class VALIDACIONES_USUARIO {
     
@@ -62,11 +63,13 @@ export class VALIDACIONES_USUARIO {
             Validators.required,
             Validators.maxLength(50),
             Validators.minLength(2),
+            isNotLetter()
         ],
         validatorsMsg : {
             required: "Ingresa tu nombre",
             maxLength: "Nombre incorrecto",
             minLength: "Nombre incorrecto",
+            isNotLetter: "Nombre incorrecto",
         },
         showMsg: ""
     }
@@ -74,7 +77,7 @@ export class VALIDACIONES_USUARIO {
     public descripcionUsuarioVal : GrupoValidaciones = {
         validators: [
             Validators.required,
-            Validators.maxLength(200),
+            Validators.maxLength(255),
         ],
         validatorsMsg : {
             required: "Queremos saber algo de ti",
@@ -111,7 +114,7 @@ export class VALIDACIONES_USUARIO {
     public descripcionRevistaVal : GrupoValidaciones = {
         validators: [
             Validators.required,
-            Validators.maxLength(300),
+            Validators.maxLength(1000),
         ],
         validatorsMsg : {
             required: "Ingresa la descripción de la revista",

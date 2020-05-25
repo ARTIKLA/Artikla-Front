@@ -1,4 +1,7 @@
 import { Router } from '@angular/router';
+import { RespuestaWS } from '../interfaces/respueta.ws';
+import { RespuestasWS } from './Constantes/respuestasWS';
+import { _respWS } from './Constantes/Enums/cod_respuestasWS';
 
 export class StatusPage {
     constructor(public router : Router) {}
@@ -18,15 +21,18 @@ export class StatusPage {
         }, 0);
     }
     
-    // getUsuario() {
-    //     let newSesion = <UserResponse> {};
-    //     let sesion = <UserResponse>JSON.parse(localStorage.getItem('SESSION'));
-    //     return (sesion != null && sesion != undefined)? sesion : newSesion;
-    // }
-
-    // saveUsuario(user : UserResponse) {
-    //     localStorage.setItem("SESSION", JSON.stringify(user));
-    // }
+    mensajePorMostrar(MsgResponse : RespuestaWS) : boolean {
+        let showMsg = false;
+        Object.values(new RespuestasWS()).forEach((r : RespuestaWS) => {
+            //El WS retorna el key del enum
+            if(_respWS[r.codigo] == MsgResponse.codigo.toString() && MsgResponse.mensaje != null 
+                && MsgResponse.mensaje != undefined && r.mostrar) {
+                showMsg = true;
+                return;
+            }
+        });
+        return showMsg;
+    }
 
     showModal() {
         this.modal = true;

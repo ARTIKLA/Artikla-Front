@@ -7,6 +7,8 @@ import { GrupoValidaciones, MensajeCampo } from 'src/app/interfaces/interface.va
 import { StatusPage } from 'src/app/helpers/status_page';
 import { RegistroUsuarioService } from 'src/app/services/registro-usuario/registro-usuario.service';
 import { of } from 'rxjs';
+import { RespuestasWS } from 'src/app/helpers/Constantes/respuestasWS';
+import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -23,6 +25,7 @@ export class RegistroUsuarioComponent implements OnInit {
   public formRegistrar : FormGroup;
   public VAL : VALIDACIONES_USUARIO = new VALIDACIONES_USUARIO();
 
+  public WS : RespuestasWS = new RespuestasWS();
   constructor(public formBuilder : FormBuilder, public router : Router, public _regService : RegistroUsuarioService) { }
 
   ngOnInit(): void {
@@ -45,7 +48,7 @@ export class RegistroUsuarioComponent implements OnInit {
       correo: ['', [...this.VAL.correoUsuarioVal.validators]],
       descripcion: ['', [...this.VAL.descripcionUsuarioVal.validators]],
       rol: ['', [...this.VAL.rolVal.validators]],
-      password: ['', [...this.VAL.passwordUsuarioVal.validators]],
+      clave: ['', [...this.VAL.passwordUsuarioVal.validators]],
       passwordConfirm: ['', [...this.VAL.passwordConfirmVal.validators]],
     });
 
@@ -54,7 +57,7 @@ export class RegistroUsuarioComponent implements OnInit {
     this.validarCampoMsg(this.formRegistrar.get("correo"), this.VAL.correoUsuarioVal);
     this.validarCampoMsg(this.formRegistrar.get("descripcion"), this.VAL.descripcionUsuarioVal);
     this.validarCampoMsg(this.formRegistrar.get("rol"), this.VAL.rolVal);
-    this.validarCampoMsg(this.formRegistrar.get("password"), this.VAL.passwordUsuarioVal);
+    this.validarCampoMsg(this.formRegistrar.get("clave"), this.VAL.passwordUsuarioVal);
     this.validarCampoMsg(this.formRegistrar.get("passwordConfirm"), this.VAL.passwordConfirmVal);
   }
 
@@ -97,10 +100,9 @@ export class RegistroUsuarioComponent implements OnInit {
     if(this.formRegistrar.valid) {
       this.status.loading = true;
       this._regService.registrarAutor(this.formRegistrar.getRawValue()).subscribe(
-        (res) => {
-          // this.status.saveUsuario(res);
-          this.status.loading = false;
+        (res : RespuestaWS) => {
           console.log(res);
+          this.validarRespuestaWS(res);
 
         }, error => {
           console.log(error);
@@ -128,7 +130,6 @@ export class RegistroUsuarioComponent implements OnInit {
         (res) => {
           // this.status.saveUsuario(res);
           this.status.loading = false;
-          console.log(res);
 
         }, error => {
           console.log(error);
@@ -137,6 +138,11 @@ export class RegistroUsuarioComponent implements OnInit {
     } else {
       alert("Ingresa todos los campos");
     }    
+  }
+
+  validarRespuestaWS(respuesta : RespuestaWS) {
+    if(this.status.mensajePorMostrar(respuesta))
+      alert(respuesta.mensaje);
   }
 
 }

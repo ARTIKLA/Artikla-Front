@@ -89,7 +89,7 @@
                                         <span class="input-group-text div-icon"><i class="fas fa-key"></i></span>
                                     </div>
                                     <input type="password" class="form-control input_doc" [ngClass]="{'is-invalid': VAL.passwordUsuarioVal.showMsg }"
-                                    formControlName="password" autocomplete="off" id="PasswordUsuario" placeholder="Contraseña"><span class="oblig"> *</span>
+                                    formControlName="clave" autocomplete="off" id="PasswordUsuario" placeholder="Contraseña"><span class="oblig"> *</span>
                                     <span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password" (click)="status.viewPass($event.target, 'PasswordUsuario')"></span>
                                     <span class="invalid-feedback">{{ VAL.passwordUsuarioVal.showMsg }}</span>
                                 </div>
@@ -108,9 +108,15 @@
                         </div>
                         <br>
                         <div class="row">
+                            <div class="col-md-12 mb-3 text-center">
+                                <p class="text-danger" *ngIf="formRegistrar.get('clave').value.length > 0 && formRegistrar.get('passwordConfirm').value.length > 0 &&
+                                    formRegistrar.get('clave').value != formRegistrar.get('passwordConfirm').value">
+                                    Las contraseñas no coinciden</p>
+                            </div>
                             <div class="col-md-6 offset-md-3">
                                 <div class="form-group">
-                                    <input type="submit" name="btn-vincular" class="btn btn-login btn-sm" value="Enviar">
+                                    <input type="submit" name="btn-vincular" class="btn btn-login btn-sm" value="Enviar"
+                                    [disabled]="!formRegistrar.valid || formRegistrar.get('clave').value != formRegistrar.get('passwordConfirm').value">
                                 </div>
                             </div>
                         </div>

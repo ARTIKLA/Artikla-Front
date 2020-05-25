@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Autor } from 'src/app/entidades/autor';
+import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,9 @@ export class RegistroUsuarioService {
   
   constructor(private httpClient : HttpClient) {}
 
-  registrarAutor(autor) : Observable<boolean> {
-    return this.httpClient.post<boolean>(`${this.API_URL}/crearAutor`, autor)
-      .pipe(map((response : boolean) => {
+  registrarAutor(autor : Autor) : Observable<RespuestaWS> {
+    return this.httpClient.post<RespuestaWS>(`${this.API_URL}/crearAutor`, autor)
+      .pipe(map((response : RespuestaWS) => {
         return response;
     }));
   }
