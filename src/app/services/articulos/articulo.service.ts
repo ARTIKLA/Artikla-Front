@@ -14,13 +14,18 @@ export class ServiceService {
 
   constructor(private http:HttpClient) { }
 
-  getArticulos(){
-    return this.http.get<ArticuloDto[]>(`${this.API_URL}/traerArticulos`);
+  getArticulosAutor(id : Number){
+    console.log(id);
+    return this.http.post<Array<ArticuloDto>>(`${this.API_URL}/obtenerArticulosAutor`, id)
+    .pipe(map((articulosAutor : Array<ArticuloDto>) => {
+      return articulosAutor;
+    }));
   }
 
   crearArticulo(articulo:ArticuloDto){
    
-    return this.http.post<string>(`${this.API_URL}/agregarArticulo`, articulo).pipe(map((response : string) => {
+    return this.http.post<string>(`${this.API_URL}/agregarArticulo`, articulo)
+    .pipe(map((response : string) => {
       console.log(articulo);
       return response;
       

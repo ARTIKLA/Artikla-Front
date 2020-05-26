@@ -5,6 +5,7 @@ import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 import { Categoria } from 'src/app/entidades/Categoria';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { StatusPage } from 'src/app/helpers/status_page';
 
 @Component({
   selector: 'app-listar',
@@ -12,13 +13,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./listar.component.css']
 })
 export class ListarComponent implements OnInit {
-
   @Output() backHome = new EventEmitter();
-
-
-
   articuloDto:ArticuloDto;
   categorias:Categoria[];
+  public status : StatusPage;
 
   public modulo : MODULOS;
   get MODULOS() { return MODULOS; };
@@ -29,23 +27,21 @@ export class ListarComponent implements OnInit {
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit(){
-
+    this.status = new StatusPage(this.router);
     this.cargarArticulos();
     this.modulo = MODULOS.ARTICULOS_LISTAR;
-    
   }
   
   cargarArticulos(){
-    this.service.getArticulos()
-    .subscribe(data=>{
+    this.service.getArticulosAutor(this.status.obtenerUsuarioLocalStorage().id).subscribe(data=>{
       this.articulos = data;
       console.log(this.articulos);
+    }, error => {
+      console.log(error);
     });
   }
   
   editarArticulo(articuloDto:ArticuloDto, categorias:Categoria[]):void{
-    //localStorage.setItem("id", articuloDto.id.toString());
-    console.log("articulo seleccionado  :"+ articuloDto.descripcion);
     console.log(categorias);
     this.articuloDto = articuloDto;
     this.categorias = categorias;
@@ -57,9 +53,19 @@ export class ListarComponent implements OnInit {
     this.modulo = modulo;
   }
 
+  eliminarArticulo(articuloEliminar : ArticuloDto) {
+    this.status.modalInfo.listaMensajes = ["¿Estás seguro de que deseas eliminar tú artículo?", 
+    "<strong>"+articuloEliminar.titulo+"</strong>"]
+    this.status.modalInfo.confirmacion = true;
+    this.status.showModal();
+    
+    console.log(articuloEliminar);
+  }
+
   cerrarModal(modulo:MODULOS){
     this.modulo = modulo;
     this.cargarArticulos();
   }
   
 }
+

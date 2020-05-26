@@ -3,12 +3,15 @@ import { RespuestaWS } from '../interfaces/respueta.ws';
 import { RespuestasWS } from './Constantes/respuestasWS';
 import { _respWS } from './Constantes/Enums/cod_respuestasWS';
 import { Usuario } from '../entidades/user';
+import { modalInfo } from '../interfaces/modal.info';
+import { Output, EventEmitter } from '@angular/core';
 
 export class StatusPage {
     constructor(public router : Router) {}
     public loading : Boolean;
     public success : Boolean = false;
     public modal : Boolean;
+    public modalInfo : modalInfo = { mostrarModal: false };
     public requestMsj : Array<string>
 
     onRedirect(redirect : string, ...param) {
@@ -51,7 +54,7 @@ export class StatusPage {
     }
 
     showModal() {
-        this.modal = true;
+        this.modalInfo.mostrarModal = true;
     }
 
     closeModal() {
@@ -67,15 +70,5 @@ export class StatusPage {
         } else {
             input.setAttribute("type", "password");
         }
-    }
-
-    onMove($f , $r){
-        $r.style.transition = "all .5s";
-        if($f == true) {
-          $r.style.marginLeft = "19em"
-          $r.style.width = "100%";
-        } else
-          $r.style.marginLeft = "12em";
-        $r.style.width = "60em";
     }
 }

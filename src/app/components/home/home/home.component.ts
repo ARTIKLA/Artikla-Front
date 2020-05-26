@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/entidades/user';
 import { TIPO_USUARIO } from 'src/app/helpers/Constantes/Enums/usuarios';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
+import { modalInfo } from 'src/app/interfaces/modal.info';
 
 @Component({
   selector: 'app-home',
@@ -57,7 +58,6 @@ export class HomeComponent implements OnInit {
   editarArticulo(modulo: MODULOS, articuloDto:ArticuloDto){
     this.modulo = modulo;
     this.articuloDto = articuloDto;
-
   }
 
 }

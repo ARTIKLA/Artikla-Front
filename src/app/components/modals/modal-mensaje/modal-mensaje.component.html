@@ -1,0 +1,21 @@
+<div class="contenedor-window">
+    <div class="contenedor-prin">
+        <div class="login-card user_card_2 card-window">
+            <div class="user_card">
+                <div class="title-general text-center" *ngfor="let item of modalInfo.listaMensajes">
+                    <h6 class="panel-title">{{ item }}</h6>
+                </div>
+                <!-- <div class="title-general text-center">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-info btn-sm"
+                        (click)="DesicionUsuarioRegistro(TIPO_USUARIO.AUTOR)">Registrarme como autor</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-info btn-sm"
+                        (click)="DesicionUsuarioRegistro(TIPO_USUARIO.EDITOR)">Registrarme como editor</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

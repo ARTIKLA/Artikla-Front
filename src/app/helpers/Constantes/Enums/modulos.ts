@@ -5,4 +5,5 @@ export enum MODULOS {
     ARTICULOS_EDITAR,
     MATCH_AUTOR,
     MATCH_EDITOR,
+    MODAL
 }

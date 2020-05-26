@@ -1,5 +1,5 @@
 .match-box {
-    margin: 2rem;
+    margin: 0 2rem;
     box-shadow: 0 10px 10px #dfe6e9;
     border-radius: 8px;
     width: 100%;
@@ -11,9 +11,17 @@
     border-top-right-radius: 8px;
     border-top: 2px solid #77d8d8;
 }
+.articulo-titulo { color: teal; }
+
+.articulo-descrip {
+    height: 4em;
+    max-height: 4em;
+    overflow-y: scroll;
+}
+
 .match-header { background: #dfe6e9; border-bottom: 2px solid #b2bec3; }
 .tag-categoria{ margin-right: 30px;}
 .articulo-footer{ position: absolute; bottom: 2px;}
-.articulo-footer-edit{ position: absolute;  bottom: 1em; left: 0.5em; }
+.articulo-footer-edit{ bottom: 1em; left: 0.5em; }
 .articulo-footer-times{ position: absolute;  bottom: 1em; right: 0.5em; }
 .button-articulo-container{ border-top: 1px solid rgba(0,0,0,0.2); }
