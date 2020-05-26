@@ -6,6 +6,7 @@ import { Categoria } from 'src/app/entidades/Categoria';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { IfStmt } from '@angular/compiler';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
+import { StatusPage } from 'src/app/helpers/status_page';
 
 @Component({
   selector: 'app-insertar',
@@ -17,6 +18,7 @@ export class InsertarComponent implements OnInit {
   
   @Output() backHome = new EventEmitter();
    modulo:MODULOS;
+   public status : StatusPage;
 
   
   get MODULOS() { return MODULOS; };
@@ -29,16 +31,20 @@ export class InsertarComponent implements OnInit {
   constructor(public formBuilder : FormBuilder, private router:Router, private service:ServiceService) { }
 
   ngOnInit(): void {
-  
+    this.status = new StatusPage(this.router);
     this.ArticuloDto = this.formBuilder.group({
       titulo: ['',[]],
       descripcion: ['', []],
-      categorias: this.formBuilder.array([])
+      autor: [this.status.obtenerUsuarioLocalStorage(), []],
+      categorias: this.formBuilder.array([]),
+     
     });
+
     this.service.getCategorias().subscribe(data =>{
       this.categoriasCrear = data;
       console.log(this.categoriasCrear)
     });
+    
   }
 
 

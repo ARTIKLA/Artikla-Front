@@ -3,15 +3,11 @@
         <div class="col-md-3 match-box" *ngFor="let articulo of articulosMatch">
             <div class="row match-header">
                 <div class="col-md-4 text-left">
-                    <div><i class="fa fa-flask"></i></div>
-                    <div><i class="fa fa-robot"></i></div>
                 </div>
                 <div class="col-md-4 match-photo text-center">
                     <img src="../../../../assets/images/login-wallpaper.jpg" alt="">
                 </div>
-                <div class="col-md-4 text-right" *ngFor="let categoria of articulo.categorias">
-                    <label class="label-form match-categoria"><i class="fa fa-flask">dwwadsdDWFDGBDAWFEWFEW</i></label>
-                </div>
+ 
             </div>
             <div class="row match-body">
                 <div class="col-md-12"><br></div>
@@ -20,7 +16,7 @@
                     <br>
                    <div class="text-left">
                         <label class="label-form match-nombre font-italic"><i class="fas fa-user match-icon-user"></i>
-                        Pepe la rana hernández</label>
+                            {{articulo.titulo}}</label>
                    </div>
                 </div>
                <div class="col-md-12 match-resumen text-left">
@@ -28,6 +24,16 @@
                         <label class="label-form text-center">  
                         {{articulo.descripcion}}
                         </label>
+                    </div>
+                </div>
+           
+            </div>
+            <div class="row">
+                <div *ngFor="let categoria of articulo.categorias">
+                   <div class="col-md-11">
+                        <span class=" badge badge-dark">{{categoria.titulo}}</span>
+                   </div>
+                    <div class="col-md-1">
                     </div>
                 </div>
             </div>

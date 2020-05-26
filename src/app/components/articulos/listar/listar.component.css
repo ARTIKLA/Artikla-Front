@@ -11,12 +11,17 @@
     border-top-right-radius: 8px;
     border-top: 2px solid #77d8d8;
 }
-.articulo-titulo { color: teal; }
+.articulo-titulo { color: teal; font-size: 1em; }
 
 .articulo-descrip {
     height: 4em;
     max-height: 4em;
+    overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.articulo-descrip p {
+    width: 100%;
 }
 
 .match-header { background: #dfe6e9; border-bottom: 2px solid #b2bec3; }

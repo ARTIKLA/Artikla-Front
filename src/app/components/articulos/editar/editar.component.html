@@ -20,9 +20,9 @@
                         </div>
                         <hr />
                     
-                        <div style="float:left;" *ngFor="let categoria of categorias; let i = index">
-                                <label attr.for="categoria{{i}}" class="select-categoria badge badge-dark ml-2" for="checkCategoria">{{categoria.titulo}}</label>
-                                <input id="categoria{{i}}" type="checkbox" [checked]="filtrarCategoriasSeleccionadas(categoria)" />
+                        <div style="float:left;" *ngFor="let categoria of categorias; let i = index"   formArrayName="categorias">
+                                <label attr.for="categoria{{i}}" class="select-categoria badge badge-dark ml-2" for="checkCategoria" >{{categoria.titulo}}</label>
+                                <input id="categoria{{i}}" type="checkbox" [checked]="filtrarCategoriasSeleccionadas(categoria, 'categorias')" />
                         </div>
                         <br />
                         <br />

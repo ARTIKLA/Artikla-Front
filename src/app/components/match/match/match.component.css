@@ -35,12 +35,12 @@
 .match-yes { color: #c0392b; }
 .match-no { color: gray; }
 
-.match-yes:hover {
+.match-yes .far:hover {
     color: #d63031;
     transform: scale(1.2);
 }
-.match-no:hover {
-    color: #2d3436;
+.match-no .fas:hover {
+    color: #000000;
     transform: scale(1.2);
 }
 .match-yes-check {transform: scale(1);}
