@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/services/articulos/articulo.service';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
@@ -25,10 +25,11 @@ export class EditarComponent implements OnInit {
   articuloDto:ArticuloDto;
   categorias:Categoria[];
 
+
   ArticuloDto : FormGroup;
   categoriasActualizar: Categoria[];
+ 
   
-
   constructor(public formBuilder: FormBuilder, private router:Router, public service:ServiceService) { }
 
   ngOnInit(): void {
@@ -39,9 +40,7 @@ export class EditarComponent implements OnInit {
     this.ArticuloDto = this.formBuilder.group({
       titulo: [this.articuloEditar.titulo,[]],
       descripcion: [this.articuloEditar.descripcion, []],
-      categorias: [this.formBuilder.group({
-        
-      }), []]
+      categorias: this.formBuilder.array([]),
     });
 
     this.service.getCategorias().subscribe(categorias =>{
@@ -53,12 +52,12 @@ export class EditarComponent implements OnInit {
   
 
 
-filtrarCategoriasSeleccionadas(categoria:Categoria){
+filtrarCategoriasSeleccionadas(categoria:Categoria, key){
   
   if(this.categoriasEditar.find(a => a.id == categoria.id) == undefined){
     return false;
   }else{
-
+    
     return true;
   }
 
@@ -80,5 +79,29 @@ filtrarCategoriasSeleccionadas(categoria:Categoria){
     alert("Se actualizo el articulo correctamente");
 
   }
+
+
+  actualizarChkbxArray(chk, isChecked, key) {
+
+    const chkArray = <FormArray>this.ArticuloDto.get(key);
+    //chkArray.push(chkArray);
+
+
+    if (isChecked) {
+      console.log("esta checkeado :" + chk.titulo);
+   
+         if (chkArray.controls.findIndex(x => x.value == chk.id) == -1)
+             chkArray.push(new FormControl({ id: chk.id, titulo: chk.titulo }));
+            console.log("agregando :" +chkArray);
+             console.log(chkArray);
+    } else {
+      console.log("no esta checkeado :" + chk.titulo)
+         let idx = chkArray.controls.findIndex(x => x.value == chk.titulo);
+         chkArray.removeAt(idx);
+         console.log("eliminando" );
+         console.log(chkArray)
+    }
+    
+}
 
 }

@@ -12,7 +12,7 @@
               <div class="card match-box">
                 <div class="card-header">
                   <div class="text-center">
-                    <label class="label-form articulo-titulo">{{articulo.titulo}}</label>
+                    <label class="label-form articulo-titulo" style="width: 100%;">{{articulo.titulo}}</label>
                   </div>
                 </div>
                   <div class="card-body">
@@ -21,9 +21,10 @@
                     </div>
                     <hr/>
                     <div class="row">
-                      <div class="col-md-2 text-left" *ngFor="let categoria of articulo.categorias" >
+                      <div class="col-md-5 text-left" *ngFor="let categoria of articulo.categorias" >
                         <span class="badge badge-dark ml-2">{{categoria.titulo}} <br/> </span>
                       </div>
+                      
                     </div>
                     <hr>
                     <div class="row">
