@@ -63,7 +63,6 @@ filtrarCategoriasSeleccionadas(categoria:Categoria, key){
 
 }
 
-
   cerrarModalEditar(modulo:MODULOS){
     this.modulo= modulo;
    // this.backHome.emit(2);

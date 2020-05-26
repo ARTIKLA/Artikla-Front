@@ -23,7 +23,7 @@
 
 
 .nav-item { border-right: 2px solid #77d8d8; }
-.nav-item, .nav-link, .nav-item label, .nav-item label i { cursor: pointer; font-weight: 600; }
+.nav-item, .nav-link, .nav-item label, .nav-item label i { cursor: pointer; font-weight: 600; text-decoration: none !important; }
 .nav-item label:hover { transform: scale(1.1);text-decoration: underline; color: #ffffff; }
 .item-chat { border: none; }
 .nav-item label { width: 10rem; }

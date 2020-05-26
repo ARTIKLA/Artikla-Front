@@ -33,10 +33,9 @@ export class ListarComponent implements OnInit {
     this.modulo = MODULOS.ARTICULOS_LISTAR;
   }
   
-  cargarArticulos(){
+  cargarArticulos() {
     this.service.getArticulosAutor(this.status.obtenerUsuarioLocalStorage().id).subscribe(data=>{
       this.articulos = data;
-      console.log(this.articulos);
     }, error => {
       console.log(error);
     });
@@ -70,6 +69,7 @@ export class ListarComponent implements OnInit {
         (res : RespuestaWS) => {
           console.log(res);
           this.validarRespuestaWS(res);
+          this.cargarArticulos();
 
         }, error => {
           console.log(error);

@@ -22,8 +22,8 @@
                         </div>
                         
                         <div style="float:left;" *ngFor="let categoria of categoriasCrear" formArrayName="categorias">
-                            <label  class="badge badge-dark ml-2" >{{categoria.titulo}}</label>
-                            <input  type="checkbox" (change)="actualizarChkbxArray(categoria, $event.target.checked, 'categorias')" />
+                            <label class="badge badge-dark ml-2" >{{categoria.titulo}}</label>
+                            <input type="checkbox" (change)="actualizarChkbxArray(categoria, $event.target.checked, 'categorias')" />
                       </div>
                       <br/>
                   <hr/>

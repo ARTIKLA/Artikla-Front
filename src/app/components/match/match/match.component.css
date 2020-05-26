@@ -25,7 +25,7 @@
 .articulo-descrip { color: teal; }
 
 /* .match-categoria {  } */
-
+.articulo-titulo { padding-left: 0; }
 .match-resumen {
     margin-right: 3px;
     overflow: hidden;

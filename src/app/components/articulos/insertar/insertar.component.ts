@@ -70,16 +70,12 @@ export class InsertarComponent implements OnInit {
 }
   
   cerrarModal(){
-    console.log("click");
-
-   // this.backHome.emit(2);
    this.backHome.emit(MODULOS.ARTICULOS_LISTAR);
   }
 
   guardarArticulo(){
     console.log(this.ArticuloDto);
    
-
     this.service.crearArticulo(this.ArticuloDto.getRawValue()).subscribe((data:string)=>{
       alert("Articulo agregado con éxito");
      this.cerrarModal();

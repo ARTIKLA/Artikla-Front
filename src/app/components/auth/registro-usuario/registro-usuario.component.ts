@@ -69,7 +69,7 @@ export class RegistroUsuarioComponent implements OnInit {
   infoFormEditor() {
     this.formRegistrar.get("rol").setValue(TIPO_USUARIO.EDITOR);
     this.formRegistrar.addControl("nombreRevista", new FormControl('', this.VAL.nombreRevistaVal));    
-    this.formRegistrar.addControl("descripcionRevista", new FormControl('', this.VAL.descripcionRevistaVal));    
+    this.formRegistrar.addControl("descripcionRevista", new FormControl('', this.VAL.descripcionRevistaVal));
 
     this.validarCampoMsg(this.formRegistrar.get("nombreRevista"), this.VAL.nombreRevistaVal);
     this.validarCampoMsg(this.formRegistrar.get("descripcionRevista"), this.VAL.descripcionRevistaVal);
@@ -99,7 +99,6 @@ export class RegistroUsuarioComponent implements OnInit {
 
   registrarAutor() {
     if(this.formRegistrar.valid) {
-      this.status.loading = true;
       this._regService.registrarAutor(this.formRegistrar.getRawValue()).subscribe(
         (res : RespuestaWS) => {
           console.log(res);
@@ -126,11 +125,10 @@ export class RegistroUsuarioComponent implements OnInit {
 
   registrarEditor() {
     if(this.formRegistrar.valid) {
-      this.status.loading = true;
       this._regService.registrarEditor(this.formRegistrar.getRawValue()).subscribe(
-        (res) => {
-          // this.status.saveUsuario(res);
-          this.status.loading = false;
+        (res : RespuestaWS) => {
+          console.log(res);
+          this.validarRespuestaWS(res);
 
         }, error => {
           console.log(error);
@@ -138,6 +136,16 @@ export class RegistroUsuarioComponent implements OnInit {
 
     } else {
       alert("Ingresa todos los campos");
+      // this.status.requestMsj = ["Ingresa todos los campos"];
+      // for(let value in this.formRegistrar.value) {
+      //   if(this.formRegistrar.get(value).invalid) {
+      //     let grupo : GrupoValForm = this.GrupoVal.find(c => c.control == this.formRegistrar.get(value));
+      //     if(grupo != undefined)
+      //       this.status.requestMsj = [MensajeCampo(grupo.control, grupo.grupoVal.validatorsMsg)];
+      //     break;
+      //   }
+      // }
+      // this.status.showModal();
     }    
   }
 
