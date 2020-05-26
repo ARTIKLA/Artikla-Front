@@ -1,4 +1,4 @@
-export class editor{
+export interface Editor{
     id:string
     nombre:string
     correo:string

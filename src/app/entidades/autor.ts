@@ -1,3 +1,5 @@
+import { ArticuloDto } from './ArticuloDto';
+
 export interface Autor{
     id:number;
     nombre:string;
@@ -7,20 +9,8 @@ export interface Autor{
     estado:string;
     rol:string;
     intereses:string;
-    articulos:string;
+    articulos:Array<ArticuloDto>;
     titulo:string;
     fechaPublicacion:Date;
     categorias:string;
-}
-
-export interface Editor {
-    id:number;
-    nombre:string;
-    correo:string;
-    clave:string;
-    descripcion:string;
-    estado:string;
-    rol:string;
-    nombreRevista : string,
-    descripcionRevista : string
 }

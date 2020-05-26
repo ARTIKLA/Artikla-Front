@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Autor, Editor } from 'src/app/entidades/Autor';
+import { Autor } from 'src/app/entidades/Autor';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
+import { Editor } from 'src/app/entidades/editor';
 
 @Injectable({
   providedIn: 'root'

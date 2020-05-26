@@ -31,18 +31,22 @@ import { InsertarComponent } from './components/articulos/insertar/insertar.comp
 import { RegistroUsuarioComponent } from './components/auth/registro-usuario/registro-usuario.component';
 import { EditarComponent } from './components/articulos/editar/editar.component';
 import { ModalMensajeComponent } from './components/modals/modal-mensaje/modal-mensaje.component';
+import { MatchAutorComponent } from './components/match/match-autor/match-autor/match-autor.component';
+import { MatchEditorComponent } from './components/match/match-editor/match-editor/match-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MatchComponent,
+    MatchAutorComponent,
     HomeComponent,
     ListarComponent,
     InsertarComponent,
     RegistroUsuarioComponent,
     EditarComponent,
-    ModalMensajeComponent
+    ModalMensajeComponent,
+    MatchEditorComponent,
   ],
   imports: [
     BrowserModule,

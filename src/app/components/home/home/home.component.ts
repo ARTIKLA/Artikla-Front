@@ -15,10 +15,11 @@ import { modalInfo } from 'src/app/interfaces/modal.info';
 })
 
 export class HomeComponent implements OnInit {
-  get MODULOS() { return MODULOS; };
   public modulo : MODULOS;
+  get TIPO_USUARIO() { return TIPO_USUARIO };
   public status : StatusPage;
   public articuloDto:ArticuloDto;
+
   constructor(public router : Router, public authService : UsuarioService) { }
   
   ngOnInit(): void {
@@ -44,15 +45,23 @@ export class HomeComponent implements OnInit {
   validarRolUsuario(usuario : Usuario) {
     switch(usuario.rol) {
       case TIPO_USUARIO.AUTOR:
-        this.modulo = MODULOS.MATCH_AUTOR;
+        this.modulo = MODULOS.MATCH_AUTOR; break;
       case TIPO_USUARIO.EDITOR:
-        this.modulo = MODULOS.MATCH_AUTOR;
+        this.modulo = MODULOS.MATCH_EDITOR; break;
     }
   }
 
   asignarModulo(modulo: MODULOS){
-    console.log(modulo);
     this.modulo = modulo;
+  }
+
+  asignarModuloMatch(modulo: MODULOS){
+    switch(this.status.obtenerUsuarioLocalStorage().rol) {
+      case TIPO_USUARIO.AUTOR:
+        this.modulo = MODULOS.MATCH_AUTOR; break;
+      case TIPO_USUARIO.EDITOR:
+        this.modulo = MODULOS.MATCH_EDITOR; break;
+    }
   }
 
   editarArticulo(modulo: MODULOS, articuloDto:ArticuloDto){
