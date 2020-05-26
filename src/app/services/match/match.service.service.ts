@@ -5,12 +5,14 @@ import { map } from 'rxjs/operators';
 import { Autor } from 'src/app/entidades/autor';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
+import { Editor } from 'src/app/entidades/editor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchService {
   private API_URL : string = "http://localhost:8080";
+  http: any;
   
   constructor(private httpClient : HttpClient) {}
 
@@ -27,5 +29,10 @@ export class MatchService {
         return response;
     }));
   }
+
+  getEditores() {
+    return this.httpClient.get<Editor[]>(`${this.API_URL}/obtenerEditores`);
+  }
+
 
 }
