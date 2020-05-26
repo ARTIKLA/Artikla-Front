@@ -15,7 +15,7 @@
                         <label>Mis Match<i class="far fa-heart fa-1x"></i></label>
                     </a>
                 </li>
-                <li class="nav-item text-center" (click)="asignarModulo(MODULOS.ARTICULOS_LISTAR)">
+                <li *ngIf="isAutor" class="nav-item text-center" (click)="asignarModulo(MODULOS.ARTICULOS_LISTAR)">
                     <a class="nav-link">
                         <label>Mis artículos<i class="far fa-newspaper fa-1x"></i></label>
                     </a>

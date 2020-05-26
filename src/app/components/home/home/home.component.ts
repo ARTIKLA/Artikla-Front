@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   public modulo : MODULOS;
   public status : StatusPage;
   public articuloDto:ArticuloDto;
+  public isAutor : boolean = false;
+
   constructor(public router : Router, public authService : UsuarioService) { }
   
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class HomeComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+
+      if(this.status.obtenerUsuarioLocalStorage().id ==  TIPO_USUARIO.AUTOR){
+        this.isAutor = true;
+      }
   }
 
   validarRolUsuario(usuario : Usuario) {
