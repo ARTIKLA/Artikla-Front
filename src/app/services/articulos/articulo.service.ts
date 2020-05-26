@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ArticuloDto } from '../../entidades/ArticuloDto';
 import { Categoria } from '../../entidades/Categoria';
 import { map } from 'rxjs/operators';
+import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,11 @@ export class ServiceService {
   }
 
   crearArticulo(articulo:ArticuloDto){
-   
     return this.http.post<string>(`${this.API_URL}/agregarArticulo`, articulo)
-    .pipe(map((response : string) => {
-      console.log(articulo);
-      return response;
-      
-  }));
+        .pipe(map((response : string) => {
+        console.log(articulo);
+        return response;
+    }));
   }
 
   getArticuloById(id:number){
@@ -40,7 +39,11 @@ export class ServiceService {
     return this.http.put<ArticuloDto>(this.API_URL+"/editarArticulo/", articulo);
   }
 
-  eliminarArticulo(articulo:ArticuloDto){
+  eliminarArticulo(id : Number){
+    return this.http.post<RespuestaWS>(`${this.API_URL}/eliminarArticulo`, id)
+    .pipe(map((respuesta : RespuestaWS) => {
+      return respuesta;
+    }));
   }
 
   getCategorias() {

@@ -6,6 +6,7 @@ import { Categoria } from 'src/app/entidades/Categoria';
 import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { StatusPage } from 'src/app/helpers/status_page';
+import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 
 @Component({
   selector: 'app-listar',
@@ -14,6 +15,7 @@ import { StatusPage } from 'src/app/helpers/status_page';
 })
 export class ListarComponent implements OnInit {
   @Output() backHome = new EventEmitter();
+  articulos:ArticuloDto[];
   articuloDto:ArticuloDto;
   categorias:Categoria[];
   public status : StatusPage;
@@ -22,7 +24,6 @@ export class ListarComponent implements OnInit {
   get MODULOS() { return MODULOS; };
  
   
-  articulos:ArticuloDto[];
   
   constructor(private service:ServiceService, private router:Router) { }
 
@@ -54,17 +55,36 @@ export class ListarComponent implements OnInit {
   }
 
   eliminarArticulo(articuloEliminar : ArticuloDto) {
-    this.status.modalInfo.listaMensajes = ["¿Estás seguro de que deseas eliminar tú artículo?", 
-    "<strong>"+articuloEliminar.titulo+"</strong>"]
+    this.status.modalInfo.listaMensajes = ["¿Estás seguro de eliminar tu artículo?", articuloEliminar.titulo.toString()]
     this.status.modalInfo.confirmacion = true;
-    this.status.showModal();
-    
-    console.log(articuloEliminar);
+    this.articuloDto = articuloEliminar;
+    this.status.mostrarModal();
+  }
+
+  confirmarEliminarArticulo(eliminar) {
+    this.status.cerrarModal();
+    let idArticulo = this.articuloDto != undefined? this.articuloDto.id : -1;
+
+    if(eliminar){
+      this.service.eliminarArticulo(idArticulo).subscribe(
+        (res : RespuestaWS) => {
+          console.log(res);
+          this.validarRespuestaWS(res);
+
+        }, error => {
+          console.log(error);
+        });
+    }
   }
 
   cerrarModal(modulo:MODULOS){
     this.modulo = modulo;
     this.cargarArticulos();
+  }
+
+  validarRespuestaWS(respuesta : RespuestaWS) {
+    if(this.status.mensajePorMostrar(respuesta))
+      alert(respuesta.mensaje);
   }
   
 }

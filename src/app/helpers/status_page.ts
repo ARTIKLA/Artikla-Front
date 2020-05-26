@@ -27,8 +27,10 @@ export class StatusPage {
     
     mensajePorMostrar(MsgResponse : RespuestaWS) : boolean {
         let showMsg = false;
+        console.log(_respWS);
         Object.values(new RespuestasWS()).forEach((r : RespuestaWS) => {
             //El WS retorna el key del enum
+            console.log(r);
             if(_respWS[r.codigo] == MsgResponse.codigo.toString() && MsgResponse.mensaje != null 
                 && MsgResponse.mensaje != undefined && r.mostrar) {
                 showMsg = true;
@@ -53,12 +55,12 @@ export class StatusPage {
         } catch(ex) { return usuario; }
     }
 
-    showModal() {
+    mostrarModal() {
         this.modalInfo.mostrarModal = true;
     }
 
-    closeModal() {
-        this.modal = false;
+    cerrarModal() {
+        this.modalInfo.mostrarModal = false;
     }
     
     viewPass(eye, inputID) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { modalInfo } from 'src/app/interfaces/modal.info';
 
 @Component({
@@ -9,10 +9,15 @@ import { modalInfo } from 'src/app/interfaces/modal.info';
 export class ModalMensajeComponent implements OnInit {
 
   @Input() modalInfo : modalInfo;
+  @Output() modalConfirmado = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.modalInfo);
+  }
+
+  modalConfirmar(opcion : boolean) {
+    this.modalConfirmado.emit(opcion);
   }
 
 }
