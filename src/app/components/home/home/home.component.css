@@ -30,3 +30,11 @@
 .nav-item label i { margin: 0 15px; }
 .nav-link { display: flex; }
 .nav-link label { color: #ffffff; margin: auto; }
+
+footer{
+    padding: 1em;
+    background: #0f385a;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

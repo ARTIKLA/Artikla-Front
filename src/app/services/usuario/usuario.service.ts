@@ -34,4 +34,10 @@ export class UsuarioService {
     }));
   }
 
+  editarUsuario(usuario:Usuario){
+    console.log("llegando");
+    console.log(usuario);
+    return this.httpClient.put<Usuario>(this.API_URL+"/actualizarUsuario", usuario);
+  }
+
 }

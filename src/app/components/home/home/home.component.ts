@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   buscarInfoUsuario() {
-     console.log(this.status.obtenerUsuarioLocalStorage());
+     console.log("usuario: "+this.status.obtenerUsuarioLocalStorage().rol);
      this.authService.obtenerUsuarioPorId(this.status.obtenerUsuarioLocalStorage().id).subscribe(
       (usuario : Usuario) => {
         if(usuario == null) {
@@ -68,5 +68,7 @@ export class HomeComponent implements OnInit {
     this.modulo = modulo;
     this.articuloDto = articuloDto;
   }
+
+  
 
 }

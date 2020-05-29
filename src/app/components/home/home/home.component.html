@@ -10,12 +10,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav">
-                <li class="nav-item text-center" (click)="asignarModuloMatch()">
+                <li class="nav-item text-center"  (click)="asignarModulo(4)">
                     <a class="nav-link">
                         <label>Inicio<i class="far fa-home fa-1x"></i></label>
                     </a>
                 </li>
-                <li class="nav-item text-center" (click)="asignarModulo(4)">
+                <li class="nav-item text-center" >
                     <a class="nav-link">
                         <label>Mis Match<i class="far fa-heart fa-1x"></i></label>
                     </a>
@@ -25,7 +25,7 @@
                         <label>Mis artículos<i class="far fa-newspaper fa-1x"></i></label>
                     </a>
                 </li>
-                <li class="nav-item text-center">
+                <li class="nav-item text-center" (click)="asignarModulo(7)">
                     <a class="nav-link">
                         <label>Mi perfil<i class="far fa-user fa-1x"></i></label>
                     </a>
@@ -46,7 +46,12 @@
     <app-match-editor *ngIf="modulo === 5"></app-match-editor>
     <app-insertar *ngIf="modulo == 2"></app-insertar>       
     <app-listar *ngIf="modulo == 1" (backHome)="editarArticulo($event, articuloDto)"> </app-listar>   
+    <app-ver-perfil *ngIf="modulo === 7"></app-ver-perfil>
 </div>
+
+<footer>
+<br/>
+</footer>
 
 
 

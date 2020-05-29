@@ -56,6 +56,7 @@ export class StatusPage {
     }
 
     mostrarModal() {
+        console.log("llego");
         this.modalInfo.mostrarModal = true;
     }
 

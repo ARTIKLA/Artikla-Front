@@ -35,7 +35,6 @@ export class EditarComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.modulo);
     console.log("modulo :" +this.modulo)
-    window.scrollTo(0,0);
     
     this.ArticuloDto = this.formBuilder.group({
       titulo: [this.articuloEditar.titulo,[]],
@@ -65,7 +64,6 @@ filtrarCategoriasSeleccionadas(categoria:Categoria, key){
 
   cerrarModalEditar(modulo:MODULOS){
     this.modulo= modulo;
-   // this.backHome.emit(2);
    this.backHome.emit(MODULOS.ARTICULOS_LISTAR);
   }
 

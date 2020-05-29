@@ -33,6 +33,10 @@ import { EditarComponent } from './components/articulos/editar/editar.component'
 import { ModalMensajeComponent } from './components/modals/modal-mensaje/modal-mensaje.component';
 import { MatchAutorComponent } from './components/match/match-autor/match-autor/match-autor.component';
 import { MatchEditorComponent } from './components/match/match-editor/match-editor/match-editor.component';
+import { VerPerfilComponent } from './components/perfil/ver-perfil/ver-perfil.component';
+import { EditarPerfilComponent } from './components/perfil/editar-perfil/editar-perfil/editar-perfil.component';
+import { PassComponent } from './components/perfil/cambiar-contra/pass/pass.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +51,9 @@ import { MatchEditorComponent } from './components/match/match-editor/match-edit
     EditarComponent,
     ModalMensajeComponent,
     MatchEditorComponent,
+    VerPerfilComponent,
+    EditarPerfilComponent,
+    PassComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { ListarComponent } from './components/articulos/listar/listar.component'
 import { InsertarComponent } from './components/articulos/insertar/insertar.component';
 import { RegistroUsuarioComponent } from './components/auth/registro-usuario/registro-usuario.component';
 import { EditarComponent } from './components/articulos/editar/editar.component';
+import { VerPerfilComponent } from './components/perfil/ver-perfil/ver-perfil.component';
 
 
 const routes: Routes = [
@@ -16,11 +17,12 @@ const routes: Routes = [
   { path: 'auth/registrar' , component: RegistroUsuarioComponent },
   { path: 'articulos/listar', component : ListarComponent},
   { path: 'articulos/insertar', component : InsertarComponent},
-  { path: 'articulos/editar', component : EditarComponent}
+  { path: 'articulos/editar', component : EditarComponent},
+  { path: 'perfil/ver-perfil', component : VerPerfilComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true })], 
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
