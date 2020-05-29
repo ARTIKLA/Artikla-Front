@@ -8,4 +8,5 @@ export enum MODULOS {
     MODAL, 
     VER_PERFIL,
     EDITAR_PERFIL,
+    MIS_MATCH
 }

@@ -1,5 +1,5 @@
 export interface Editor{
-    id:string
+    id:number
     nombre:string
     correo:string
     clave:string

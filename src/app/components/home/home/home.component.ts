@@ -16,6 +16,8 @@ import { modalInfo } from 'src/app/interfaces/modal.info';
 
 export class HomeComponent implements OnInit {
   public modulo : MODULOS;
+
+  get MODULOS() { return MODULOS };
   get TIPO_USUARIO() { return TIPO_USUARIO };
   public status : StatusPage;
   public articuloDto:ArticuloDto;
@@ -69,6 +71,6 @@ export class HomeComponent implements OnInit {
     this.articuloDto = articuloDto;
   }
 
-  
+
 
 }

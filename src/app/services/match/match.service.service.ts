@@ -6,6 +6,9 @@ import { Autor } from 'src/app/entidades/autor';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 import { Editor } from 'src/app/entidades/editor';
+import { Match } from 'src/app/entidades/match';
+import { Usuario } from 'src/app/entidades/user';
+import { MatchDto } from 'src/app/entidades/MatchDto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +18,6 @@ export class MatchService {
   
   constructor(private httpClient : HttpClient) {}
 
-  // posiblesMatchAutores() : Observable<Array<Autor>> {
-  //   return this.httpClient.get<Array<Autor>>(`${this.API_URL}/posiblesMatchT`)
-  //     .pipe(map((response : Array<Autor>) => {
-  //       return response;
-  //   }));
-  // }
-
   posiblesMatchArticulos(idEditor : number) : Observable<Array<Autor>> {
     return this.httpClient.post<Array<Autor>>(`${this.API_URL}/obtenerPosiblesMatchAutores`, idEditor)
       .pipe(map((response : Array<Autor>) => {
@@ -29,9 +25,39 @@ export class MatchService {
     }));
   }
 
-  getEditores() {
-    return this.httpClient.get<Editor[]>(`${this.API_URL}/obtenerEditores`);
+  getEditores(autor:Autor) {
+    return this.httpClient.post<Editor[]>(`${this.API_URL}/obtenerEditores`, autor);
   }
+
+  solicitarMatch(match:Match){
+    return this.httpClient.post<Match>(`${this.API_URL}/solicitarMatch`,  match);
+  }
+
+  descartarMatch(match:Match){
+    return this.httpClient.post<Match>(`${this.API_URL}/descartarMatch`,  match);
+  }
+
+  obtenerMatchsSolicitados(usuario:Usuario){
+    return this.httpClient.post<MatchDto[]>(`${this.API_URL}/obtenerMatchsSolicitados`,  usuario);
+  }
+
+  obtenerMatchsRecibidos(usuario:Usuario){
+    return this.httpClient.post<MatchDto[]>(`${this.API_URL}/obtenerMatchRecibidos`,  usuario);
+  }
+
+  aceptarMatch(match:Match){
+    return this.httpClient.post<MatchDto>(`${this.API_URL}/aceptarMatch`,  match);
+  }
+
+  rechazarMatch(match:Match){
+    return this.httpClient.post<MatchDto>(`${this.API_URL}/rechazarMatch`,  match);
+  }
+
+  obtenerMatchExitosos(usuario:Usuario){
+    return this.httpClient.post<MatchDto[]>(`${this.API_URL}/obtenerMatchExitosos`,  usuario);
+  }
+
+  
 
 
 }

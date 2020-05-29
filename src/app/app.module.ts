@@ -36,6 +36,8 @@ import { MatchEditorComponent } from './components/match/match-editor/match-edit
 import { VerPerfilComponent } from './components/perfil/ver-perfil/ver-perfil.component';
 import { EditarPerfilComponent } from './components/perfil/editar-perfil/editar-perfil/editar-perfil.component';
 import { PassComponent } from './components/perfil/cambiar-contra/pass/pass.component';
+import { MisMatchsComponent } from './components/match/mis-matchs/mis-matchs/mis-matchs.component';
+import { ContactoMatchComponent } from './components/match/contacto-match/contacto-match/contacto-match.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { PassComponent } from './components/perfil/cambiar-contra/pass/pass.comp
     MatchEditorComponent,
     VerPerfilComponent,
     EditarPerfilComponent,
-    PassComponent
+    PassComponent,
+    MisMatchsComponent,
+    ContactoMatchComponent
   ],
   imports: [
     BrowserModule,

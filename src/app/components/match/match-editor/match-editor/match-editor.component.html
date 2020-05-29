@@ -26,6 +26,7 @@
                 </div>
             </div>
         </div>
+        
         <hr>
         <div class="row">
             <div *ngFor="let categoria of articulo.categorias">
@@ -39,10 +40,10 @@
         <hr>
         <div class="row match-footer">
             <div class="col-md-6 match-yes text-left">
-                <a (click)="solicitudMatch(articulo)"><i class="far fa-heart fa-2x"></i></a>
+                <a (click)="solicitarMatchToArticulo(articulo)"><i class="far fa-heart fa-2x"></i></a>
             </div>
             <div class="col-md-6 match-no text-right">
-                <a><i class="fas fa-times fa-2x"></i></a>
+                <a><i class="fas fa-times fa-2x" (click)="descartarMatch(articulo)"></i></a>
             </div>
         </div>
     </div>

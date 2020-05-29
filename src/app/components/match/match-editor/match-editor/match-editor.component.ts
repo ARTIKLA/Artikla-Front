@@ -17,8 +17,10 @@ import { Match } from 'src/app/entidades/match';
 export class MatchEditorComponent implements OnInit {
   public status : StatusPage;
   public articulosMatch : Array<ArticuloMatch> = [];
+  public articulo:ArticuloDto;
 
   public editor:Editor;
+  public match:Match;
   public usuarios:TIPO_USUARIO;
   
   constructor(public _matchService : MatchService,  private router:Router) { }
@@ -62,6 +64,70 @@ export class MatchEditorComponent implements OnInit {
     }
     console.log(this.articulosMatch);
   }
+
+  solicitarMatchToArticulo(articulo:ArticuloDto){
+
+    this.articulo = articulo;
+    console.log("solicitar match clicked");
+    console.log(articulo.autor.id);
+
+     this.match = {
+       id_editor : this.status.obtenerUsuarioLocalStorage().id,
+       id_autor: articulo.autor.id,
+       id_articulo_match : articulo.id,
+       usuario_solicitante :  this.status.obtenerUsuarioLocalStorage().id,
+       usuario_solicitado : articulo.autor.id
+    }
+
+       this._matchService.solicitarMatch(this.match).subscribe(data=>{
+         alert("Match solicitado correctamente");
+        console.log(this.match);
+        this.match = {}
+        this.articulosMatch = [];
+        this.obtenerMatchAutores(); 
+      });
+
+  }
+
+
+  descartarMatch(articulo:ArticuloDto){
+    this.articulo = articulo;
+
+    console.log("descartar match clicked");
+
+    this.match = {
+      id_editor : this.status.obtenerUsuarioLocalStorage().id,
+      id_autor: articulo.autor.id,
+      id_articulo_match : articulo.id,
+   }
+
+      this._matchService.descartarMatch(this.match).subscribe(data=>{
+        alert("Candidato match descartado");
+       console.log(this.match);
+       this.match = {}
+       this.articulosMatch = [];
+       this.obtenerMatchAutores();
+      });
+  }
+
+  validarUsuarioEnSesion(){
+    if(this.status.obtenerUsuarioLocalStorage().rol == TIPO_USUARIO.EDITOR ){
+      return TIPO_USUARIO.EDITOR;
+    }else{
+      return TIPO_USUARIO.EDITOR;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
   // solicitudMatch(articuloMatch : ArticuloMatch) {

@@ -21,9 +21,9 @@
             </div>
            <div class="col-md-12 match-resumen text-left">
                 <div class="col-md-12 text-left">
-                    <label class="label-form text-center">  
+                    <p class="text-center">  
                     {{editor.descripcion}}
-                    </label>
+                    </p>
                 </div>
             </div>
        
@@ -39,10 +39,10 @@
         </div>
         <hr>
         <div class="row match-footer">
-            <div class="col-md-6 match-yes text-left">
+            <div class="col-md-6 match-yes text-left" (click)="solicitarMatchToEditor(editor)">
                 <a><i class="far fa-heart fa-2x"></i></a>
             </div>
-            <div class="col-md-6 match-no text-right">
+            <div class="col-md-6 match-no text-right" (click)="descartarMatch(editor)">
                 <a><i class="fas fa-times fa-2x"></i></a>
             </div>
         </div>

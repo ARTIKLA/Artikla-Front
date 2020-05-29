@@ -32,9 +32,10 @@
 .nav-link label { color: #ffffff; margin: auto; }
 
 footer{
-    padding: 1em;
+
     background: #0f385a;
     position: fixed;
     bottom: 0;
     width: 100%;
+    padding-bottom: 0.5em;
 }

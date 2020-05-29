@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav">
-                <li class="nav-item text-center"  (click)="asignarModulo(4)">
+                <li class="nav-item text-center" (click)="validarRolUsuario(status.obtenerUsuarioLocalStorage())">
                     <a class="nav-link">
                         <label>Inicio<i class="far fa-home fa-1x"></i></label>
                     </a>
                 </li>
                 <li class="nav-item text-center" >
-                    <a class="nav-link">
+                    <a class="nav-link" (click)="asignarModulo(MODULOS.MIS_MATCH)">
                         <label>Mis Match<i class="far fa-heart fa-1x"></i></label>
                     </a>
                 </li>
@@ -47,6 +47,7 @@
     <app-insertar *ngIf="modulo == 2"></app-insertar>       
     <app-listar *ngIf="modulo == 1" (backHome)="editarArticulo($event, articuloDto)"> </app-listar>   
     <app-ver-perfil *ngIf="modulo === 7"></app-ver-perfil>
+    <app-mis-matchs *ngIf="modulo == MODULOS.MIS_MATCH"></app-mis-matchs>
 </div>
 
 <footer>

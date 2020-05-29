@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Editor } from 'src/app/entidades/editor';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { TIPO_USUARIO } from 'src/app/helpers/Constantes/Enums/usuarios';
+import { Usuario } from 'src/app/entidades/user';
 
 @Component({
   selector: 'app-match',
@@ -27,36 +28,41 @@ export class MatchComponent implements OnInit {
   constructor(public _matchService : MatchService,  private router:Router) { }
 
   ngOnInit(): void {
-    this.status = new StatusPage(this.router);
+    // this.status = new StatusPage(this.router);
 
-    this.status.obtenerUsuarioLocalStorage();
-    if(this.status.obtenerUsuarioLocalStorage().rol === TIPO_USUARIO.AUTOR){
+    // this.status.obtenerUsuarioLocalStorage();
+    // if(this.status.obtenerUsuarioLocalStorage().rol === TIPO_USUARIO.AUTOR){
 
-      this.obtenerMatchEditores();
-      this.isEditor = false;
+    //   this.obtenerMatchEditores();
+    //   this.isEditor = false;
 
-    }else if(this.status.obtenerUsuarioLocalStorage().rol === TIPO_USUARIO.EDITOR){
+    // }else if(this.status.obtenerUsuarioLocalStorage().rol === TIPO_USUARIO.EDITOR){
 
-      this.obtenerMatchAutores();
-      this.isEditor = true;
+    //   this.obtenerMatchAutores();
+    //   this.isEditor = true;
 
-    }
+    // }
    
   }
 
-  obtenerMatchAutores() {
-      this._matchService.posiblesMatchArticulos().subscribe((autores : Array<ArticuloDto>) => {
-        this.articulosMatch = autores;
-        console.log(this.articulosMatch);
-      }, error => {
-        console.log(error);
-      });
-  }
+  // obtenerMatchAutores() {
+  //     this._matchService.posiblesMatchArticulos().subscribe((autores : Array<ArticuloDto>) => {
+  //       this.articulosMatch = autores;
+  //       console.log(this.articulosMatch);
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  // }
 
-  obtenerMatchEditores(){
-    this._matchService.getEditores().subscribe(data =>{
-    this.editoresMatch = data;
-    console.log(this.editoresMatch);
-    });
-  }
+  // obtenerMatchEditores(){
+  //   this._matchService.getEditores().subscribe(data =>{
+  //   this.editoresMatch = data;
+  //   console.log(this.editoresMatch);
+  //   });
+  // }
+
+
+  // solicitarMatch(usuario:Usuario){
+
+  // }
 }

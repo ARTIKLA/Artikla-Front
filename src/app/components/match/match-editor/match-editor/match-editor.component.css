@@ -1,3 +1,7 @@
+.match-content{
+    margin-bottom: 2em;
+}
+
 .match-box {
     margin: 2rem;
     box-shadow: 0 10px 10px #dfe6e9;
@@ -44,3 +48,10 @@
     transform: scale(1.2);
 }
 .match-yes-check {transform: scale(1);}
+
+.match-resumen {
+    height: 4em;
+    max-height: 4em;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}

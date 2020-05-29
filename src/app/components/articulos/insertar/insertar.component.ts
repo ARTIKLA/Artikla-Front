@@ -31,6 +31,7 @@ export class InsertarComponent implements OnInit {
   constructor(public formBuilder : FormBuilder, private router:Router, private service:ServiceService) { }
 
   ngOnInit(): void {
+
     this.status = new StatusPage(this.router);
     this.ArticuloDto = this.formBuilder.group({
       titulo: ['',[]],
