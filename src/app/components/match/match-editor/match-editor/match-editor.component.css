@@ -50,8 +50,7 @@
 .match-yes-check {transform: scale(1);}
 
 .match-resumen {
-    height: 4em;
-    max-height: 4em;
-    overflow-x: scroll;
+    height: 150px;
+    overflow-x: hidden;
     overflow-y: scroll;
 }

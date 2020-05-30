@@ -39,8 +39,8 @@ export class ServiceService {
     return this.http.put<ArticuloDto>(this.API_URL+"/editarArticulo/", articulo);
   }
 
-  eliminarArticulo(id : Number){
-    return this.http.post<RespuestaWS>(`${this.API_URL}/eliminarArticulo`, id)
+  eliminarArticulo(articulo : ArticuloDto){
+    return this.http.post<RespuestaWS>(`${this.API_URL}/eliminarArticulo`, articulo)
     .pipe(map((respuesta : RespuestaWS) => {
       return respuesta;
     }));
@@ -49,6 +49,7 @@ export class ServiceService {
   getCategorias() {
     return this.http.get<Categoria[]>(`${this.API_URL}/obtenerCategorias`);
   }
+
 
 
 

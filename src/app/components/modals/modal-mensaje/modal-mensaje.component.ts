@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { modalInfo } from 'src/app/interfaces/modal.info';
+import { ArticuloDto } from 'src/app/entidades/ArticuloDto';
 
 @Component({
   selector: 'app-modal-mensaje',

@@ -7,8 +7,6 @@ import { MODULOS } from 'src/app/helpers/Constantes/Enums/modulos';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { StatusPage } from 'src/app/helpers/status_page';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
-import { CommonModule } from '@angular/common';  
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-listar',
@@ -56,19 +54,20 @@ export class ListarComponent implements OnInit {
   }
 
   eliminarArticulo(articuloEliminar : ArticuloDto) {
-    
-    this.status.mostrarModal();
     this.status.modalInfo.listaMensajes = ["¿Estás seguro de eliminar tu artículo?", articuloEliminar.titulo.toString()]
     this.status.modalInfo.confirmacion = true;
     this.articuloDto = articuloEliminar;
+    this.status.mostrarModal();
+    this.confirmarEliminarArticulo(this.status.modalInfo.confirmacion);
+
   }
 
   confirmarEliminarArticulo(eliminar) {
     this.status.cerrarModal();
-    let idArticulo = this.articuloDto != undefined? this.articuloDto.id : -1;
+    this.articuloDto != undefined? this.articuloDto.id : -1;
 
     if(eliminar){
-      this.service.eliminarArticulo(idArticulo).subscribe(
+      this.service.eliminarArticulo(this.articuloDto).subscribe(
         (res : RespuestaWS) => {
           console.log(res);
           this.validarRespuestaWS(res);
