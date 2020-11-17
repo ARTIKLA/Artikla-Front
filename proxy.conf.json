@@ -1,0 +1,8 @@
+{
+    "/api/*":{
+        "target":"https://artikla-back-end.azurewebsites.net",
+        "secure": false,
+        "logLevel":"debug"
+
+    }
+}

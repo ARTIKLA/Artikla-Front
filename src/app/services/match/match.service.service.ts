@@ -14,7 +14,7 @@ import { MatchDto } from 'src/app/entidades/MatchDto';
   providedIn: 'root'
 })
 export class MatchService {
-  private API_URL : string = "http://localhost:8080";
+  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
   
   constructor(private httpClient : HttpClient) {}
 
@@ -42,6 +42,7 @@ export class MatchService {
   }
 
   obtenerMatchsRecibidos(usuario:Usuario){
+    console.log("llegando a obtener");
     return this.httpClient.post<MatchDto[]>(`${this.API_URL}/obtenerMatchRecibidos`,  usuario);
   }
 

@@ -8,7 +8,7 @@ import { Login, Usuario } from 'src/app/entidades/user';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private API_URL : string = "http://localhost:8080";
+  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
   
   constructor(private httpClient : HttpClient) {}
 

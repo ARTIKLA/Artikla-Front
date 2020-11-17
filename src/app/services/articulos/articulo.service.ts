@@ -10,7 +10,7 @@ import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 })
 export class ServiceService {
 
-  private API_URL : string = "http://localhost:8080";
+  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
   articulo:ArticuloDto[];
 
   constructor(private http:HttpClient) { }

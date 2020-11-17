@@ -10,7 +10,8 @@ import { Editor } from 'src/app/entidades/editor';
   providedIn: 'root'
 })
 export class RegistroUsuarioService {
-  private API_URL : string = "http://localhost:8080";
+ // private API_URL : string = "http://localhost:8080";
+  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
   
   constructor(private httpClient : HttpClient) {}
 
