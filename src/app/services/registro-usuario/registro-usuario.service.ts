@@ -5,13 +5,15 @@ import { map } from 'rxjs/operators';
 import { Autor } from 'src/app/entidades/Autor';
 import { RespuestaWS } from 'src/app/interfaces/respueta.ws';
 import { Editor } from 'src/app/entidades/editor';
+import * as Cons from '../../helpers/Constantes/constantes';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroUsuarioService {
  // private API_URL : string = "http://localhost:8080";
-  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
+  private API_URL : string = Cons.url;
   
   constructor(private httpClient : HttpClient) {}
 

@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Login, Usuario } from 'src/app/entidades/user';
+import * as Cons from '../../helpers/Constantes/constantes';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  private API_URL : string = "https://artikla-back-end.azurewebsites.net";
+  private API_URL : string = Cons.url;
   
   constructor(private httpClient : HttpClient) {}
 
